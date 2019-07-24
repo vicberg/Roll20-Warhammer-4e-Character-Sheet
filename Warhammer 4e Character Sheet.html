@@ -46,10 +46,10 @@
 					<div class="sheet-row">
 					    <div class="sheet-col-1-5 sheet-vert-middle sheet-pad-r-sm sheet-wrap-box-label" style="margin-top:3px" >
 							<select class="sheet-select-no-arrow-center" name="attr_Race">
-								<option value="-0" data-i18n="HUMAN">Human</option>
-								<option value="-0" data-i18n="ELF">Elf</option>
-								<option value="-0" data-i18n="DWARF">Dwarf</option>
-								<option value="-3" data-i18n="HALFLING">Halfling</option>
+								<option value="Human" data-i18n="HUMAN">Human</option>
+								<option value="Elf" data-i18n="ELF">Elf</option>
+								<option value="Dwarf" data-i18n="DWARF">Dwarf</option>
+								<option value="Halfling" data-i18n="HALFLING">Halfling</option>
 							</select>
 						    <div class="sheet-wrap-box-label sheet-center">
 								<span data-i18n="RACE">Race</span>
@@ -535,41 +535,35 @@
             </div>
 			<!-- Basic Skills -->
 			<div class="sheet-col-1-2 sheet-vert-top">
-    			<div class="sheet-row">
-    				<div class="sheet-col-1">
-    					<h4 class="sheet-center">
-    						<span data-i18n="WOUNDS">Wounds</span>
-    					</h4>
-    				</div>
-    			</div>		
-        		<div class="sheet-row sheet-sub-header">
-        			<div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="WOUNDS">Wounds</div>
-        			<div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MODIFIERS">Modifiers</div>
-        			<div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TOTAL-WOUNDS">Total Wounds</div>
-                    <div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="DAMAGE">Damage</div>
-                    <div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="IMPALE">Impale</div>
-                     <div class="sheet-col-1-5 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TOTAL-DAMAGE">Total Damage</div>
-        		</div>
-    			<div class="sheet-row">
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Wounds" value="@{StrengthBonus}+@{ToughnessBonus}+@{ToughnessBonus}+@{WillPowerBonus}+@{Race}" disabled=true/>
-        			</div>
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Modifiers" value="0"/>
+        		<div class="sheet-col-1">
+        			<h4 class="sheet-center">
+        				<span data-i18n="MOVEMENT">Movement</span>
+        			</h4>
+        		</div>	
+    		    <div class="sheet-col-1">
+        			<div class="sheet-row">
+                 		<div class="sheet-row sheet-sub-header">
+                			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MOVE">Move</div>
+                			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TALENTS">Talents</div>
+                			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MOVE">Walk</div>
+                			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="RUN">Run</div>        
+                		</div>
         			</div>	
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_TotalWounds" value="@{Wounds}+@{Modifiers}" disabled=true/>
-        			</div>						
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Damage" value="0"/>
-        			</div>
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Impale" value="0"/>
-        			</div>    
-        			<div class="sheet-col-1-5 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_TotalDamage" value="@{Damage}+@{Impale}" disabled=true/>
-        			</div>        			
-		        </div>
+        			<div class="sheet-row">
+            			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
+            				<input class="sheet-center" type="number" name="attr_Movement" value="0"/>
+            			</div>
+            			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
+            				<input class="sheet-center" type="number" name="attr_MovementTalents" value="0"/>
+            			</div>        			
+            			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
+            				<input class="sheet-center" type="number" name="attr_Charge" value="(@{Movement}+@{MovementTalents})*2" disabled="true"/>
+            			</div>
+            			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
+            				<input class="sheet-center" type="number" name="attr_Run" value="(@{Movement}+@{MovementTalents})*4" disabled="true"/>
+            			</div>        				
+        			</div>	
+    			</div>    			
     			<span class="sheet-spacer"></span>	
     			<div class="sheet-col-1">
     				<h4 class="sheet-center">
@@ -1045,7 +1039,6 @@
 					<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm sheet-vert-middle">
 						<input class="sheet-center" type="number" name="attr_Endurance" value="@{EnduranceChar}+@{EnduranceAdv}+@{EnduranceMisc}" disabled="true"/>
 					</div>
-
 					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
 						<button type="roll" class="sheet-roll" name="roll_Endurance" value="@{Whisper} &{template:whfrp2e} {{title=^{ENDURANCE}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{EnduranceChar}+@{EnduranceAdv}+@{EnduranceMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
 					</div>
@@ -1680,7 +1673,7 @@
             						<input class="sheet-center" type="number" name="attr_StealthSpecialization" value="@{StealthSpecializationChar}+@{StealthSpecializationAdv}+@{StealthSpecializationMisc}-@{armormailpenalty}-@{armorplatepenalty}" disabled="true"/>
             					</div>
             					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            						<button type="roll" class="sheet-roll" name="roll_StealthSpecialization" value="@{Whisper} &{template:whfrp2e} {{title=@{StealthSpecializationName}}} {{skill=^{RIDE}}} {{character_name=@{character_name}}} {{target=[[@{StealthSpecializationChar}+@{StealthSpecializationAdv}+@{StealthSpecializationMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+            						<button type="roll" class="sheet-roll" name="roll_StealthSpecialization" value="@{Whisper} &{template:whfrp2e} {{title=@{StealthSpecializationName}}} {{skill=^{STEALTH}}} {{character_name=@{character_name}}} {{target=[[@{StealthSpecializationChar}+@{StealthSpecializationAdv}+@{StealthSpecializationMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
             					</div>									
             				</div>
             			</fieldset>	
@@ -2536,7 +2529,7 @@
 									<input class="sheet-center" type="number" name="attr_Trade" value="(@{TradeSpecializationChar}+@{TradeAdv}+@{TradeMisc})*@{TradeTaken}" disabled="true"/>
 								</div>
 								<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-									<button type="roll" class="sheet-roll" name="roll_Trade" value="@{Whisper} &{template:whfrp2e} {{title=@{SecretSignsSpecialization}}} {{skill=^{LORE}}} {{character_name=@{character_name}}} {{target=[[@{TradeSpecializationChar}+@{TradeAdv}+@{TradeMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+									<button type="roll" class="sheet-roll" name="roll_Trade" value="@{Whisper} &{template:whfrp2e} {{title=@{TradeSpecialization}}} {{skill=^{LORE}}} {{character_name=@{character_name}}} {{target=[[@{TradeSpecializationChar}+@{TradeAdv}+@{TradeMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
 								</div>	
 								<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm sheet-vert-middle">
 									<input type="checkbox" name="attr_TradeTaken" value="1"/>
@@ -2811,83 +2804,110 @@
 		</div>
 		<span class="sheet-spacer"></span>	
 		<div class="sheet-row">
-			<div class="sheet-col-1-4 sheet-center">
+			<div class="sheet-col-1-7 sheet-center">
     		    <div class="sheet-col-1 sheet-center sheet-pad-r-sm sheet-block-a">
         			<button type="roll" class="sheet-roll" name="roll_Initiative" value="@{Whisper} &{template:whfrp2e} {{title=^{INITIATIVE}}} {{character_name=@{character_name}}} {{inittest=[[1d10+(@{Initiative})&{tracker}]]}}">
         				<span data-i18n="INITIATIVE">Initiative</span>
         			</button>
         		</div>	    			
 			</div>	
-			<div class="sheet-col-1-4 sheet-center sheet-pad-r-md">
+			<div class="sheet-col-1-7 sheet-center sheet-pad-r-md">
 				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
 					<button type="roll" class="sheet-roll" name="roll_CriticalRoll" value="@{Whisper} &{template:whfrp2e} {{title=Critical Roll}} {{character_name=@{character_name}}} {{attacktype=^{CRITICAL}}} {{critlocation=[[?{Hit Location|Head,1|Right Arm,2|Left Arm,3|Body,4|Right Leg,5|Left Leg,6}]]}} {{critroll=[[[[1d100]]+?{@{translation_modifier}|0}]]}}">
 						<span data-i18n="CRITICAL-HIT">Critical Hit</span>
 					</button>
 				</div>
 			</div>
-			<div class="sheet-col-1-4 sheet-center">
+			<div class="sheet-col-1-7 sheet-center">
 				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
 					<button type="roll" class="sheet-roll" name="roll_FumbleTest" value="@{Whisper} &{template:whfrp2e} {{title=^{FUMBLE}}} {{character_name=@{character_name}}} {{attacktype=^{CRITICAL}}} {{fumbleroll=[[1d100]]}}">
 						<span data-i18n="OOPS">Oops</span>
 					</button>
 				</div>
 			</div>
-			<div class="sheet-col-1-4 sheet-center">
+			<div class="sheet-col-1-7 sheet-center">
 				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
 					<button type="roll" class="sheet-roll" name="roll_AmputationTest" value="@{Whisper} &{template:whfrp2e} {{title=^{AMPUTATION}}} {{character_name=@{character_name}}} {{attacktype=^{CRITICAL}}} {{amputationroll=true}} {{test=[[1d100]]}} {{target=[[@{Endurance}+?{@{translation_modifier}|0}]]}}">
 						<span data-i18n="AMPUTATION">Amputation</span>
 					</button>
 				</div>
-			</div>			
+			</div>		
+			<div class="sheet-col-1-7 sheet-center">
+				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
+					<button type="roll" class="sheet-roll" name="roll_Dodge" value="@{Whisper} &{template:whfrp2e} {{title=^{DODGE}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{DodgeChar}+@{DodgeAdv}+@{DodgeMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}">
+						<span data-i18n="DODGE">Dodge</span>
+					</button>
+				</div>
+			</div>	
+			<div class="sheet-col-1-7 sheet-center">
+				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
+					<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{ART}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{ArtChar}+@{ArtAdv}+@{ArtMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}">
+						<span data-i18n="ATHLETICS">Athletics</span>
+					</button>
+				</div>
+			</div>	
+			<div class="sheet-col-1-7 sheet-center">
+				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
+					<button type="roll" class="sheet-roll" name="roll_Endurance" value="@{Whisper} &{template:whfrp2e} {{title=^{ENDURANCE}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{EnduranceChar}+@{EnduranceAdv}+@{EnduranceMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}">
+						<span data-i18n="ENDURANCE">Endurance</span>
+					</button>
+				</div>
+			</div>				
 		</div>		
-		
+
 		<span class="sheet-spacer"></span>	
 		<div class="sheet-row"> 
-			<div class="sheet-col-1-3">
+			<div class="sheet-col-1-2 sheet-pad-r-sm">
 				<h4 class="sheet-center">
-					<span data-i18n="MOVEMENT">Movement</span>
+					<span data-i18n="WOUNDS">Wounds</span>
 				</h4>
 			</div>
-			<div class="sheet-col-1-3">
+			<div class="sheet-col-1-4 sheet-pad-r-sm">
 				<h4 class="sheet-center">
 					<span data-i18n="ADVANTAGE">Advtange</span>
 				</h4>
 			</div> 				
-			<div class="sheet-col-1-3">
+			<div class="sheet-col-1-4 sheet-pad-r-sm">
 				<h4 class="sheet-center">
 					<span data-i18n="FATE-AND-RESOLVE">Fate & Resolve</span>
 				</h4>
 			</div> 	  
 		</div>
 		<div class="sheet-row"> 
-		    <div class="sheet-col-1-3">
+		    <div class="sheet-col-1-2">
+        		<div class="sheet-row sheet-sub-header">
+        			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="WOUNDS">Wounds</div>
+        			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MODIFIERS">Modifiers</div>
+        			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TOTAL-WOUNDS">Total Wounds</div>
+                    <div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="DAMAGE">Damage</div>
+                    <div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="IMPALE">Impale</div>
+                    <div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TOTAL-DAMAGE">Total Damage</div>
+        		</div>
     			<div class="sheet-row">
-             		<div class="sheet-row sheet-sub-header">
-            			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MOVE">Move</div>
-            			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="TALENTS">Talents</div>
-            			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="MOVE">Walk</div>
-            			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="RUN">Run</div>        
-            		</div>
-    			</div>	
-    			<div class="sheet-row">
-        			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Movement" value="0"/>
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_Wounds" value="@{StrengthBonus}+@{ToughnessBonus}+@{ToughnessBonus}+@{WillPowerBonus}" disabled=true/>
         			</div>
-        			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_MovementTalents" value="0"/>
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_Modifiers" value="0"/>
+        			</div>	
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_TotalWounds" value="@{Wounds}+@{Modifiers}" disabled=true/>
+        			</div>						
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_Damage" value="0"/>
+        			</div>
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_Impale" value="0"/>
+        			</div>    
+        			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
+        				<input class="sheet-center" type="number" name="attr_TotalDamage" value="@{Damage}+@{Impale}" disabled=true/>
         			</div>        			
-        			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Charge" value="(@{Movement}+@{MovementTalents})*2" disabled="true"/>
-        			</div>
-        			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Run" value="(@{Movement}+@{MovementTalents})*4" disabled="true"/>
-        			</div>        				
-    			</div>	
-			</div>
-		    <div class="sheet-col-1-3">
+		        </div>
+		    </div> 
+		    <div class="sheet-col-1-4">
     			<div class="sheet-row">
-             		<div class="sheet-row sheet-sub-header">
-            			<div class="sheet-col-1 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="ADVANTAGE">Advantage</div>
+             		<div class="sheet-col-1 sheet-sub-header">
+            			<div class="sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="ADVANTAGE">Advantage</div>
             		</div>
     			</div>	
     			<div class="sheet-row">
@@ -2896,7 +2916,7 @@
         			</div> 
     			</div>	
 			</div>			
-            <div class="sheet-col-1-3">
+            <div class="sheet-col-1-4">
         		<div class="sheet-row sheet-sub-header">
         			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="FATE">Fate</div>
         			<div class="sheet-col-1-4 sheet-center sheet-small-label sheet-vert-middle sheet-pad-r-sm" data-i18n="FORTUNE">Fortune</div>
@@ -2916,7 +2936,6 @@
         			<div class="sheet-col-1-4 sheet-center sheet-pad-r-sm">
         				<input class="sheet-center" type="number" name="attr_Resolve" value="0"/>
         			</div>     
-         			
     			</div>	
     		</div>
     	</div>	
@@ -2986,7 +3005,7 @@
         				<span><button type="roll" class="sheet-roll" name="roll_MeleeAttack" value="@{Whisper} &{template:whfrp2e} {{title=@{MeleeWeapon}}} {{character_name=@{character_name}}} {{attacktype=^{MELEE}}} {{target=[[@{MeleeWeaponSkill}+@{MeleeBonus}+(@{Advantage}*10)+?{@{translation_modifier}|0}]]}} {{attacktest=true}} {{hitlocation=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}} {{impale=[[[[1d10]]*@{MeleeImpale}]]}} {{qualities=@{MeleeQualities}}} {{damage=[[@{MeleeStrengthBonus}+@{MeleeDamageBonus}]]}}"></button></span>
         			</div>
         			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-        				<span><button type="roll" class="sheet-roll" name="roll_MeleeOpposed" value="@{Whisper} &{template:whfrp2e} {{title=@{MeleeWeapon}}} {{character_name=@{character_name}}} {{attacktype=^{OPPOSED}}} {{target=[[@{MeleeWeaponSkill}+@{MeleeBonus}+(@{Advantage}*10)+(@{MeleeDefensive}*10)+?{@{translation_modifier}|0}]]}} {{attacktest=true}} {{hitlocation=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}} {{qualities=@{MeleeQualities}}} "></button></span>
+        				<span><button type="roll" class="sheet-roll" name="roll_MeleeOpposed" value="@{Whisper} &{template:whfrp2e} {{title=@{MeleeWeapon}}} {{character_name=@{character_name}}} {{attacktype=^{OPPOSED}}} {{target=[[@{MeleeWeaponSkill}+@{MeleeBonus}+(@{Advantage}*10)+(@{MeleeDefensive}*10)+?{@{translation_modifier}|0}]]}} {{attacktest=true}} {{hitlocation=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}} {{qualities=@{MeleeQualities}}} {{armorqualities=@{armorQuality}}} "></button></span>
         			</div>
         		</div>	
         	</fieldset>
@@ -3978,6 +3997,15 @@
 						<span data-i18n="ARMOR-HELM-PENALTY">Wearing Helm (-20 penalty to Perception)</span>
 					</div>
 				</div>	
+				<div class="sheet-spacer"></div>
+				<div class="sheet-row sheet-spell-header">
+					<div class="sheet-col-1 sheet-vert-bottom sheet-center sheet-small-label sheet-mar-t-lg">
+						<span data-i18n="ARMOR-QUALITIES">Armor Qualities and Flaws</span>
+					</div>
+				</div>				
+				<div class="sheet-row">
+				    <textarea class="sheet-small-textarea-resize" name="attr_armorQuality"></textarea>
+				</div>
 			</div>				
 		</div>
 	</div>
@@ -4087,7 +4115,7 @@
 							<input type="text" class="sheet-center" name="attr_spelldamage"/>
 						</div>						
 						<div class="sheet-col-1-10 sheet-spell-button-group sheet-right">
-							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{PETTY-SPELL}}} {{spellrange=@{spellrange}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{hitlocation=[[1d100]]}} {{spelldamage=@{spelldamage}}} {{spelldescription=@{spelldescription}}} {{spellcastingnumber=@{spellcastingnumber}}} ">
+							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{PETTY-SPELL}}} {{spellrange=@{spellrange}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spelldescription=@{spelldescription}}} {{spellcastingnumber=@{spellcastingnumber}}} ">
 								<span data-i18n="CAST">Cast</span>
 							</button>
 						</div>
@@ -4147,7 +4175,7 @@
 							<input type="text" class="sheet-center" name="attr_spelldamage"/>
 						</div>						
 						<div class="sheet-col-1-10 sheet-spell-button-group sheet-right">
-							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{PETTY-SPELL}}} {{spellcasttime=@{spellcasttime}}} {{spellrange=@{spellrange}}} {{spellingredients=@{spellingredients}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellcastingnumber=[[@{spellcastingnumber}]]}} {{spelltest=[[?{Amount of Magic Used|1,1d10|2,2d10|3,3d10|4,4d10|5,5d10|6,6d10}+?{Channelling Success|No,0|Yes,(@{Magic})}+?{Ingredient Used|No,0|Yes,@{spellingredientbonus}}+?{Misc Modifier|0}]]}} {{spelldescription=@{spelldescription}}} {{spellhealing=[[@{spellhealing}]]}} {{spellhits=[[@{spellhits}]]}} {{hitlocation=[[1d100]]}} {{spelldamage=[[1d10+@{spelldamage}]]}} {{furytest=[[1d100]]}} {{furytarget=[[@{WillPower}]]}} {{furydamage=[[1d10!]]}} {{hitlocation2=[[1d100]]}} {{spelldamage2=[[1d10+@{spelldamage}]]}} {{furytest2=[[1d100]]}} {{furytarget2=[[@{WillPower}]]}} {{furydamage2=[[1d10!]]}} {{hitlocation3=[[1d100]]}} {{spelldamage3=[[1d10+@{spelldamage}]]}} {{furytest3=[[1d100]]}} {{furytarget3=[[@{WillPower}]]}} {{furydamage3=[[1d10!]]}} {{hitlocation4=[[1d100]]}} {{spelldamage4=[[1d10+@{spelldamage}]]}} {{furytest4=[[1d100]]}} {{furytarget4=[[@{WillPower}]]}} {{furydamage4=[[1d10!]]}} {{hitlocation5=[[1d100]]}} {{spelldamage5=[[1d10+@{spelldamage}]]}} {{furytest5=[[1d100]]}} {{furytarget5=[[@{WillPower}]]}} {{furydamage5=[[1d10!]]}} {{hitlocation6=[[1d100]]}} {{spelldamage6=[[1d10+@{spelldamage}]]}} {{furytest6=[[1d100]]}} {{furytarget6=[[@{WillPower}]]}} {{furydamage6=[[1d10!]]}} {{hitlocation7=[[1d100]]}} {{spelldamage7=[[1d10+@{spelldamage}]]}} {{furytest7=[[1d100]]}} {{furytarget7=[[@{WillPower}]]}} {{furydamage7=[[1d10!]]}} {{hitlocation8=[[1d100]]}} {{spelldamage8=[[1d10+@{spelldamage}]]}} {{furytest8=[[1d100]]}} {{furytarget8=[[@{WillPower}]]}} {{furydamage8=[[1d10!]]}} {{hitlocation9=[[1d100]]}} {{spelldamage9=[[1d10+@{spelldamage}]]}} {{furytest9=[[1d100]]}} {{furytarget9=[[@{WillPower}]]}} {{furydamage9=[[1d10!]]}} {{hitlocation10=[[1d100]]}} {{spelldamage10=[[1d10+@{spelldamage}]]}} {{furytest10=[[1d100]]}} {{furytarget10=[[@{WillPower}]]}} {{furydamage10=[[1d10!]]}}">
+							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{LESSER-SPELL}}} {{spellrange=@{spellrange}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spelldescription=@{spelldescription}}} {{spellcastingnumber=@{spellcastingnumber}}} ">
 								<span data-i18n="CAST">Cast</span>
 							</button>
 						</div>
@@ -4207,7 +4235,7 @@
 							<input type="text" class="sheet-center" name="attr_spelldamage"/>
 						</div>						
 						<div class="sheet-col-1-10 sheet-spell-button-group sheet-right">
-							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{PETTY-SPELL}}} {{spellcasttime=@{spellcasttime}}} {{spellrange=@{spellrange}}} {{spellingredients=@{spellingredients}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellcastingnumber=[[@{spellcastingnumber}]]}} {{spelltest=[[?{Amount of Magic Used|1,1d10|2,2d10|3,3d10|4,4d10|5,5d10|6,6d10}+?{Channelling Success|No,0|Yes,(@{Magic})}+?{Ingredient Used|No,0|Yes,@{spellingredientbonus}}+?{Misc Modifier|0}]]}} {{spelldescription=@{spelldescription}}} {{spellhealing=[[@{spellhealing}]]}} {{spellhits=[[@{spellhits}]]}} {{hitlocation=[[1d100]]}} {{spelldamage=[[1d10+@{spelldamage}]]}} {{furytest=[[1d100]]}} {{furytarget=[[@{WillPower}]]}} {{furydamage=[[1d10!]]}} {{hitlocation2=[[1d100]]}} {{spelldamage2=[[1d10+@{spelldamage}]]}} {{furytest2=[[1d100]]}} {{furytarget2=[[@{WillPower}]]}} {{furydamage2=[[1d10!]]}} {{hitlocation3=[[1d100]]}} {{spelldamage3=[[1d10+@{spelldamage}]]}} {{furytest3=[[1d100]]}} {{furytarget3=[[@{WillPower}]]}} {{furydamage3=[[1d10!]]}} {{hitlocation4=[[1d100]]}} {{spelldamage4=[[1d10+@{spelldamage}]]}} {{furytest4=[[1d100]]}} {{furytarget4=[[@{WillPower}]]}} {{furydamage4=[[1d10!]]}} {{hitlocation5=[[1d100]]}} {{spelldamage5=[[1d10+@{spelldamage}]]}} {{furytest5=[[1d100]]}} {{furytarget5=[[@{WillPower}]]}} {{furydamage5=[[1d10!]]}} {{hitlocation6=[[1d100]]}} {{spelldamage6=[[1d10+@{spelldamage}]]}} {{furytest6=[[1d100]]}} {{furytarget6=[[@{WillPower}]]}} {{furydamage6=[[1d10!]]}} {{hitlocation7=[[1d100]]}} {{spelldamage7=[[1d10+@{spelldamage}]]}} {{furytest7=[[1d100]]}} {{furytarget7=[[@{WillPower}]]}} {{furydamage7=[[1d10!]]}} {{hitlocation8=[[1d100]]}} {{spelldamage8=[[1d10+@{spelldamage}]]}} {{furytest8=[[1d100]]}} {{furytarget8=[[@{WillPower}]]}} {{furydamage8=[[1d10!]]}} {{hitlocation9=[[1d100]]}} {{spelldamage9=[[1d10+@{spelldamage}]]}} {{furytest9=[[1d100]]}} {{furytarget9=[[@{WillPower}]]}} {{furydamage9=[[1d10!]]}} {{hitlocation10=[[1d100]]}} {{spelldamage10=[[1d10+@{spelldamage}]]}} {{furytest10=[[1d100]]}} {{furytarget10=[[@{WillPower}]]}} {{furydamage10=[[1d10!]]}}">
+							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{ARCANE-SPELL}}} {{spellrange=@{spellrange}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spelldescription=@{spelldescription}}} {{spellcastingnumber=@{spellcastingnumber}}} ">
 								<span data-i18n="CAST">Cast</span>
 							</button>
 						</div>
@@ -4267,7 +4295,7 @@
 							<input type="text" class="sheet-center" name="attr_spelldamage"/>
 						</div>						
 						<div class="sheet-col-1-10 sheet-spell-button-group sheet-right">
-							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{PETTY-SPELL}}} {{spellcasttime=@{spellcasttime}}} {{spellrange=@{spellrange}}} {{spellingredients=@{spellingredients}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellcastingnumber=[[@{spellcastingnumber}]]}} {{spelltest=[[?{Amount of Magic Used|1,1d10|2,2d10|3,3d10|4,4d10|5,5d10|6,6d10}+?{Channelling Success|No,0|Yes,(@{Magic})}+?{Ingredient Used|No,0|Yes,@{spellingredientbonus}}+?{Misc Modifier|0}]]}} {{spelldescription=@{spelldescription}}} {{spellhealing=[[@{spellhealing}]]}} {{spellhits=[[@{spellhits}]]}} {{hitlocation=[[1d100]]}} {{spelldamage=[[1d10+@{spelldamage}]]}} {{furytest=[[1d100]]}} {{furytarget=[[@{WillPower}]]}} {{furydamage=[[1d10!]]}} {{hitlocation2=[[1d100]]}} {{spelldamage2=[[1d10+@{spelldamage}]]}} {{furytest2=[[1d100]]}} {{furytarget2=[[@{WillPower}]]}} {{furydamage2=[[1d10!]]}} {{hitlocation3=[[1d100]]}} {{spelldamage3=[[1d10+@{spelldamage}]]}} {{furytest3=[[1d100]]}} {{furytarget3=[[@{WillPower}]]}} {{furydamage3=[[1d10!]]}} {{hitlocation4=[[1d100]]}} {{spelldamage4=[[1d10+@{spelldamage}]]}} {{furytest4=[[1d100]]}} {{furytarget4=[[@{WillPower}]]}} {{furydamage4=[[1d10!]]}} {{hitlocation5=[[1d100]]}} {{spelldamage5=[[1d10+@{spelldamage}]]}} {{furytest5=[[1d100]]}} {{furytarget5=[[@{WillPower}]]}} {{furydamage5=[[1d10!]]}} {{hitlocation6=[[1d100]]}} {{spelldamage6=[[1d10+@{spelldamage}]]}} {{furytest6=[[1d100]]}} {{furytarget6=[[@{WillPower}]]}} {{furydamage6=[[1d10!]]}} {{hitlocation7=[[1d100]]}} {{spelldamage7=[[1d10+@{spelldamage}]]}} {{furytest7=[[1d100]]}} {{furytarget7=[[@{WillPower}]]}} {{furydamage7=[[1d10!]]}} {{hitlocation8=[[1d100]]}} {{spelldamage8=[[1d10+@{spelldamage}]]}} {{furytest8=[[1d100]]}} {{furytarget8=[[@{WillPower}]]}} {{furydamage8=[[1d10!]]}} {{hitlocation9=[[1d100]]}} {{spelldamage9=[[1d10+@{spelldamage}]]}} {{furytest9=[[1d100]]}} {{furytarget9=[[@{WillPower}]]}} {{furydamage9=[[1d10!]]}} {{hitlocation10=[[1d100]]}} {{spelldamage10=[[1d10+@{spelldamage}]]}} {{furytest10=[[1d100]]}} {{furytarget10=[[@{WillPower}]]}} {{furydamage10=[[1d10!]]}}">
+							<button type="roll" class="sheet-roll" name="roll_SpellCast" value="@{Whisper} &{template:whfrp2e} {{title=@{spellname}}} {{character_name=@{character_name}}} {{spelltype=^{DIVINE-SPELL}}} {{spellrange=@{spellrange}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spelldescription=@{spelldescription}}} {{spellcastingnumber=@{spellcastingnumber}}} ">
 								<span data-i18n="CAST">Cast</span>
 							</button>
 						</div>
@@ -4492,7 +4520,9 @@
 		</div>
 		<div class="sheet-row sheet-mar-b-md">
 			<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm">
-				<input type="number" name="attr_EncWeapon"/>
+			    <input type="hidden" name="attr_EncMelee"/> 
+			    <input type="hidden" name="attr_EncRanged"/>
+				<input type="number" name="attr_EncWeapon" value="[[@{EncMelee} + @{EncRanged}]]" disabled="true"/>
 			</div>
 			<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm">
 				<input type="number" name="attr_EncArmor" value="@{armortotalenc}" disabled="true"/>
@@ -4513,7 +4543,7 @@
 				<input type="number" name="attr_SturdyLevel" value="0"/>
 			</div>			
 			<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm">
-				<input type="number" name="attr_MaxEnc" value="[[@{StrengthBonus}+@{ToughnessBonus}+(@{SturdyLevel}*2)]]" disabled="true"/>
+				<input type="number" name="attr_MaxEnc" value="[[@{StrengthBonus}+@{ToughnessBonus}+(@{SturdyLevel})]]" disabled="true"/>
 			</div>
 			<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm">
 				<input type="number" name="attr_OverEnc" value="0"/>
@@ -5172,7 +5202,7 @@
 	<div class="sheet-spacer-xl"></div>
 	<!-- FOOTER -->
 	<div class="sheet-row sheet-footer">
-		<div class="sheet-col-1 sheet-small-label sheet-center">Sheet version: August 2018</div>
+		<div class="sheet-col-1 sheet-small-label sheet-center">Sheet version: July 2019</div>
 	</div>
 </div>
 
@@ -5647,10 +5677,12 @@
 				
 				repAttrs = function TAS_Repeating_Attrs(){
 					attrNames = namesFromArgs(arguments,attrNames);
+					log(attrNames)
 					return this;
 				},
 				repFields = function TAS_Repeating_Fields(){
 					fieldNames = namesFromArgs(arguments,fieldNames);
+					log(fieldNames)
 					return this;
 				},
 				repReduce = function TAS_Repeating_Reduce(func, initial, final, context) { 
@@ -5850,13 +5882,26 @@
 	
 	/* ---- END: TheAaronSheet.js ---- */
 	
-	on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) {
-		TAS.repeatingSimpleSum('inventory', 'inventoryweight_repeat', 'calc_inventorycarried');
-	});
+//	on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) {/
+//		TAS.repeatingSimpleSum('inventory', 'inventoryweight_repeat', 'calc_inventorycarried');
+//	});
 	
-    on("change:repeating_melee remove:repeating_melee", function(){
-        TAS.repeatingSimpleSum('melee','MeleeEnc','EncWeapon');
+    on("sheet:opened change:repeating_melee remove:repeating_melee", function(){
+        TAS.repeatingSimpleSum('melee','MeleeEnc','EncMelee');
+    });
+        
+    on("sheet:opened change:repeating_ranged remove:repeating_ranged", function(){
+        TAS.repeatingSimpleSum('ranged','RangedEnc','EncRanged');
+    });        
+    
+//     on("sheet:opened change:strength", function() {
+//   getAttrs(["Strength", "Level"], function(values) {
+//       setAttrs({
+//           StrengthMod: Math.floor(values.Strength / 2)
+//       });
+//   });
 });
+//});
 	
 </script>
 <!-- UTILITY SCRIPT -->
@@ -5930,10 +5975,16 @@
 		<div class="sheet-main-content">
 			{{#qualities}}
 				<div class="sheet-row">
-					<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="QUALITIES">Qualities</div>
+					<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" style="vertical-align:top" data-i18n="QUALITIES">Qualities</div>
 					<div class="sheet-col-13-24 sheet-pad-r-sm sheet-rt-value">{{qualities}}</div>
 				</div>
 			{{/qualities}}
+			{{#armorqualities}}
+				<div class="sheet-row">
+					<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" style="vertical-align:top" data-i18n="ARMOR">Armor</div>
+					<div class="sheet-col-13-24 sheet-pad-r-sm sheet-rt-value">{{armorqualities}}</div>
+				</div>
+			{{/armorqualities}}			
 			{{#target}}
 				<div class="sheet-row">
 					<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="TARGET-NUMBER">Target Number</div>
