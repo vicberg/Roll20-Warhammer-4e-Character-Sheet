@@ -8347,6 +8347,7 @@ on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) 
 
 /* STAT MODIFIERS
 This sheet worker loop calculates the values of all the 10 core attributes from their constituent parts, and their modifiers.
+TotalWounds was dependent on a bunch of stats that were autocalc, so they needed to be replaced with sheet workers for it to work.
 
 */
 const stats = ['WeaponSkill', 'BallisticSkill', 'Strength', 'Toughness', 'Initiative', 'Agility', 'Dexterity', 'Intelligence', 'Willpower', 'Fellowship'];
