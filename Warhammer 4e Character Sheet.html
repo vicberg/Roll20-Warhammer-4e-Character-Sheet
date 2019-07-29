@@ -1,3 +1,5 @@
+<input type="hidden" name="attr_CurrentWounds" value=""  />
+<input type="hidden" name="attr_CurrentWounds_max" value=""  />
 <div class="sheet-overall-wrapper">
 	<!-- HEADER -->
 	<div class="sheet-core-header sheet-pad-b-md">
@@ -8404,6 +8406,22 @@ Object.keys(simpleAdders).forEach(attribute => {
 		});
 	});
 });
+
+// hidden wound attribute for those who want to handle wounds via TokenBar only
+on('change:totalwounds', function (event) {
+	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
+		const base = +v.TotalWounds || 0;
+		const change = (+event.newValue || 0) - (+event.previousValue || 0);
+		const max = base;
+		const wounds = (+v.CurrentWounds || 0) + change;
+		if (wounds > max) wounds = max;
+		setAttrs({
+			CurrentWounds: wounds,
+			CurrentWounds_max: max
+		});
+	});
+});
+
 
 </script>
 
