@@ -8298,7 +8298,7 @@
 	    });
 	});
 	
-//<!-- REPEATING SCRIPT -->
+//--- REPEATING SCRIPT ---
 /* ===== PARAMETERS ==========
 destination = the name of the attribute that stores the total quantity
 section = name of repeating fieldset, without the repeating_
@@ -8345,7 +8345,10 @@ on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) 
 	});
 
 
-	//	STAT MODIFIERS
+/* STAT MODIFIERS
+This sheet worker loop calculates the values of all the 10 core attributes from their constituent parts, and their modifiers.
+
+*/
 const stats = ['WeaponSkill', 'BallisticSkill', 'Strength', 'Toughness', 'Initiative', 'Agility', 'Dexterity', 'Intelligence', 'Willpower', 'Fellowship'];
 stats.forEach(stat => {
 
@@ -8390,7 +8393,11 @@ on('sheet:opened change:strengthbonus change:toughnessbonus change:willpowerbonu
 	});
 });
 
-// ADDERS: enter a title attribute followed by an array of attributes to sum up
+/*
+SIMPLE ADDERS:
+if you have a bunch of attributes that are calculated just by adding two or more other attribute values together,
+you can use this. Just enter the attribute that is the final value, a colon, and then the attributes that are added together as an array.
+*/
 const simpleAdders = {
 	TotalWounds: ['Wounds', 'Modifiers'],
 	TotalDamage: ['Damage','Impale']
