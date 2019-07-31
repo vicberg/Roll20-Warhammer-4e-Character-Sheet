@@ -1,3 +1,5 @@
+<input type="hidden" name="attr_CurrentWounds" value=""  />
+<input type="hidden" name="attr_CurrentWounds_max" value=""  />
 <div class="sheet-overall-wrapper">
 	<!-- HEADER -->
 	<div class="sheet-core-header sheet-pad-b-md">
@@ -336,34 +338,34 @@
 						<span data-i18n="CURRENT">Current</span>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WeaponSkill" value="@{WeaponSkillStart}+@{WeaponSkillTalents}+@{WeaponSkillAdv}+@{WeaponSkillMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WeaponSkill" value="@{WeaponSkillStart}+@{WeaponSkillTalents}+@{WeaponSkillAdv}+@{WeaponSkillMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_BallisticSkill" value="@{BallisticSkillStart}+@{BallisticSkillTalents}+@{BallisticSkillAdv}+@{BallisticSkillMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_BallisticSkill" value="@{BallisticSkillStart}+@{BallisticSkillTalents}+@{BallisticSkillAdv}+@{BallisticSkillMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Strength" value="@{StrengthStart}+@{StrengthTalents}+@{StrengthAdv}+@{StrengthMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Strength" value="@{StrengthStart}+@{StrengthTalents}+@{StrengthAdv}+@{StrengthMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Toughness" value="@{ToughnessStart}+@{ToughnessTalents}+@{ToughnessAdv}+@{ToughnessMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Toughness" value="@{ToughnessStart}+@{ToughnessTalents}+@{ToughnessAdv}+@{ToughnessMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Initiative" value="@{InitiativeStart}+@{InitiativeTalents}+@{InitiativeAdv}+@{InitiativeMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Initiative" value="@{InitiativeStart}+@{InitiativeTalents}+@{InitiativeAdv}+@{InitiativeMod}" readonly />
 					</div>		
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Agility" value="@{AgilityStart}+@{AgilityTalents}+@{AgilityAdv}+@{AgilityMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Agility" value="@{AgilityStart}+@{AgilityTalents}+@{AgilityAdv}+@{AgilityMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Dexterity" value="@{DexterityStart}+@{DexterityTalents}+@{DexterityAdv}+@{DexterityMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Dexterity" value="@{DexterityStart}+@{DexterityTalents}+@{DexterityAdv}+@{DexterityMod}" readonly />
 					</div>						
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Intelligence" value="@{IntelligenceStart}+@{IntelligenceTalents}+@{IntelligenceAdv}+@{IntelligenceMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Intelligence" value="@{IntelligenceStart}+@{IntelligenceTalents}+@{IntelligenceAdv}+@{IntelligenceMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WillPower" value="@{WillPowerStart}+@{WillPowerTalents}+@{WillPowerAdv}+@{WillPowerMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WillPower" value="@{WillPowerStart}+@{WillPowerTalents}+@{WillPowerAdv}+@{WillPowerMod}" readonly />
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_Fellowship" value="@{FellowshipStart}+@{FellowshipTalents}+@{FellowshipAdv}+@{FellowshipMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_Fellowship" value="@{FellowshipStart}+@{FellowshipTalents}+@{FellowshipAdv}+@{FellowshipMod}" readonly />
 					</div>
 				</div>
 				<span class="sheet-spacer"></span>
@@ -430,34 +432,34 @@
 						<span data-i18n="STARTING">Starting</span>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WeaponSkillBonusStart" value="floor((@{WeaponSkillStart}+@{WeaponSkillTalents}+@{WeaponSkillAdv}+@{WeaponSkillMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WeaponSkillBonusStart" value="floor((@{WeaponSkillStart}+@{WeaponSkillTalents}+@{WeaponSkillAdv}+@{WeaponSkillMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_BallisticSkillBonusStart" value="floor((@{BallisticSkillStart}+@{BallisticSkillTalents}+@{BallisticSkillAdv}+@{BallisticSkillMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_BallisticSkillBonusStart" value="floor((@{BallisticSkillStart}+@{BallisticSkillTalents}+@{BallisticSkillAdv}+@{BallisticSkillMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_StrengthBonusStart" value="floor((@{StrengthStart}+@{StrengthTalents}+@{StrengthAdv}+@{StrengthMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_StrengthBonusStart" value="floor((@{StrengthStart}+@{StrengthTalents}+@{StrengthAdv}+@{StrengthMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_ToughnessBonusStart" value="floor((@{ToughnessStart}+@{ToughnessTalents}+@{ToughnessAdv}+@{ToughnessMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_ToughnessBonusStart" value="floor((@{ToughnessStart}+@{ToughnessTalents}+@{ToughnessAdv}+@{ToughnessMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_InitiativeBonusStart" value="floor((@{InitiativeStart}+@{InitiativeTalents}+@{InitiativeAdv}+@{InitiativeMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_InitiativeBonusStart" value="floor((@{InitiativeStart}+@{InitiativeTalents}+@{InitiativeAdv}+@{InitiativeMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_AgilityBonusStart" value="floor((@{AgilityStart}+@{AgilityTalents}+@{AgilityAdv}+@{AgilityMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_AgilityBonusStart" value="floor((@{AgilityStart}+@{AgilityTalents}+@{AgilityAdv}+@{AgilityMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_DexterityBonusStart" value="floor((@{DexterityStart}+@{DexterityTalents}+@{DexterityAdv}+@{DexterityMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_DexterityBonusStart" value="floor((@{DexterityStart}+@{DexterityTalents}+@{DexterityAdv}+@{DexterityMod})/10)" readonly/>
 					</div>					
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_IntelligenceBonusStart" value="floor((@{IntelligenceStart}+@{IntelligenceTalents}+@{IntelligenceAdv}+@{IntelligenceMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_IntelligenceBonusStart" value="floor((@{IntelligenceStart}+@{IntelligenceTalents}+@{IntelligenceAdv}+@{IntelligenceMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WillPowerBonusStart" value="floor((@{WillPowerStart}+@{WillPowerTalents}+@{WillPowerAdv}+@{WillPowerMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WillPowerBonusStart" value="floor((@{WillPowerStart}+@{WillPowerTalents}+@{WillPowerAdv}+@{WillPowerMod})/10)" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_FellowshipBonusStart" value="floor((@{FellowshipStart}+@{FellowshipTalents}+@{FellowshipAdv}+@{FellowshipMod})/10)" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_FellowshipBonusStart" value="floor((@{FellowshipStart}+@{FellowshipTalents}+@{FellowshipAdv}+@{FellowshipMod})/10)" readonly/>
 					</div>					
 				</div>
 				<div class="sheet-row">
@@ -500,34 +502,34 @@
 						<span data-i18n="CURRENT">Current</span>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WeaponSkillBonus" value="@{WeaponSkillBonusStart}+@{WeaponSkillBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WeaponSkillBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_BallisticSkillBonus" value="@{BallisticSkillBonusStart}+@{BallisticSkillBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_BallisticSkillBonus" value="@{BallisticSkillBonusStart}+@{BallisticSkillBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_StrengthBonus" value="@{StrengthBonusStart}+@{StrengthBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_StrengthBonus" value="@{StrengthBonusStart}+@{StrengthBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_ToughnessBonus" value="@{ToughnessBonusStart}+@{ToughnessBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_ToughnessBonus" value="@{ToughnessBonusStart}+@{ToughnessBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_InitiativeBonus" value="@{InitiativeBonusStart}+@{InitiativeBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_InitiativeBonus" value="@{InitiativeBonusStart}+@{InitiativeBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_AgilityBonus" value="@{AgilityBonusStart}+@{AgilityBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_AgilityBonus" value="@{AgilityBonusStart}+@{AgilityBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_DexterityBonus" value="@{DexterityBonusStart}+@{DexterityBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_DexterityBonus" value="@{DexterityBonusStart}+@{DexterityBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_IntelligenceBonus" value="@{IntelligenceBonusStart}+@{IntelligenceBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_IntelligenceBonus" value="@{IntelligenceBonusStart}+@{IntelligenceBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WillPowerBonus" value="@{WillPowerBonusStart}+@{WillPowerBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_WillPowerBonus" value="@{WillPowerBonusStart}+@{WillPowerBonusMod}" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_FellowshipBonus" value="@{FellowshipBonusStart}+@{FellowshipBonusMod}" disabled="true"/>
+						<input class="sheet-center" type="number" name="attr_FellowshipBonus" value="@{FellowshipBonusStart}+@{FellowshipBonusMod}" readonly/>
 					</div>					
 				</div>
                 <!-- Specialization Skills -->
@@ -663,7 +665,7 @@
     						<input class="sheet-center" type="number" name="attr_Art" value="@{ArtChar}+@{ArtAdv}+@{ArtMisc}" disabled="true"/>
     					</div>
     					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-    						<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{ART}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{ArtChar}+@{ArtAdv}+@{ArtMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+    						<button type="roll" class="sheet-roll" name="roll_Art" value="@{Whisper} &{template:whfrp2e} {{title=^{ART}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{ArtChar}+@{ArtAdv}+@{ArtMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
     					</div>
     				</div>
         			<fieldset class="repeating_ArtSpecializationr">
@@ -1075,7 +1077,7 @@
     						<input class="sheet-center" type="number" name="attr_Entertain" value="@{EntertainChar}+@{EntertainAdv}+@{EntertainMisc}" disabled="true"/>
     					</div>
     					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-    						<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{ENTERTAIN}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{EntertainChar}+@{EntertainAdv}+@{EntertainMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+    						<button type="roll" class="sheet-roll" name="roll_Entertain" value="@{Whisper} &{template:whfrp2e} {{title=^{ENTERTAIN}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{EntertainChar}+@{EntertainAdv}+@{EntertainMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
     					</div>								
     				</div>
         			<div class="sheet-row">
@@ -1529,7 +1531,7 @@
     						<input class="sheet-center" type="number" name="attr_Ride" value="@{RideChar}+@{RideAdv}+@{RideMisc}" disabled="true"/>
     					</div>	
     					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-    						<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{RIDE}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{RideChar}+@{RideAdv}+@{RideMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+    						<button type="roll" class="sheet-roll" name="roll_Ride" value="@{Whisper} &{template:whfrp2e} {{title=^{RIDE}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{RideChar}+@{RideAdv}+@{RideMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
     					</div>
     				</div>
         			<div class="sheet-row">
@@ -2411,7 +2413,7 @@
 						<input class="sheet-center" type="number" name="attr_SleightofHand" value="(@{SleightofHandChar}+@{SleightofHandAdv}+@{SleightofHandMisc})*@{SleightofHandTaken}" disabled="true"/>
 					</div>
 					<div class="sheet-col-7-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-						<button type="roll" class="sheet-roll" name="roll_SetTrap" value="@{Whisper} &{template:whfrp2e} {{title=^{SLEIGHT-OF-HAND}}} {{skill=^{ADVANCED-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{SleightofHandChar}+@{SleightofHandAdv}+@{SleightofHandMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
+						<button type="roll" class="sheet-roll" name="roll_SleightofHand" value="@{Whisper} &{template:whfrp2e} {{title=^{SLEIGHT-OF-HAND}}} {{skill=^{ADVANCED-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{SleightofHandChar}+@{SleightofHandAdv}+@{SleightofHandMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}"></button>
 					</div>
 					<div class="sheet-col-1-10 sheet-center sheet-pad-r-sm sheet-vert-middle">
 						<input type="checkbox" name="attr_SleightofHandTaken" value="1"/>
@@ -2841,7 +2843,7 @@
 			</div>	
 			<div class="sheet-col-1-7 sheet-center">
 				<div class="sheet-col-1 sheet-center sheet-pad-r-sm">
-					<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{ART}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{ArtChar}+@{ArtAdv}+@{ArtMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}">
+					<button type="roll" class="sheet-roll" name="roll_Athletics" value="@{Whisper} &{template:whfrp2e} {{title=^{ATHLETICS}}} {{skill=^{BASIC-SKILL}}} {{character_name=@{character_name}}} {{target=[[@{AthleticsChar}+@{AthleticsAdv}+@{AthleticsMisc}+?{@{translation_modifier}|0}]]}} {{skilltest=true}} {{test=[[1d100cs11cs22cs33cs44cs55cs66cs77cs88cs99cs100]]}}">
 						<span data-i18n="ATHLETICS">Athletics</span>
 					</button>
 				</div>
@@ -2885,13 +2887,13 @@
         		</div>
     			<div class="sheet-row">
         			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_Wounds" value="@{StrengthBonus}+@{ToughnessBonus}+@{ToughnessBonus}+@{WillPowerBonus}" disabled=true/>
+        				<input class="sheet-center" type="number" name="attr_Wounds" value="@{StrengthBonus}+@{ToughnessBonus}+@{ToughnessBonus}+@{WillPowerBonus}" readonly />
         			</div>
         			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
         				<input class="sheet-center" type="number" name="attr_Modifiers" value="0"/>
         			</div>	
         			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_TotalWounds" value="@{Wounds}+@{Modifiers}" disabled=true/>
+        				<input class="sheet-center" type="number" name="attr_TotalWounds" value="@{Wounds}+@{Modifiers}" readonly />
         			</div>						
         			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
         				<input class="sheet-center" type="number" name="attr_Damage" value="0"/>
@@ -2900,7 +2902,7 @@
         				<input class="sheet-center" type="number" name="attr_Impale" value="0"/>
         			</div>    
         			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-        				<input class="sheet-center" type="number" name="attr_TotalDamage" value="@{Damage}+@{Impale}" disabled=true/>
+        				<input class="sheet-center" type="number" name="attr_TotalDamage" value="@{Damage}+@{Impale}" readonly />
         			</div>        			
 		        </div>
 		    </div> 
@@ -5206,722 +5208,6 @@
 	</div>
 </div>
 
-<!-- TRANSLATIONS SCRIPT -->
-<script type="text/worker">
-	on("sheet:opened", function(eventInfo){setAttrs({translation_targetnumber: getTranslationByKey("TARGET-NUMBER")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_modifier: getTranslationByKey("MODIFIER")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_chaostable: getTranslationByKey("CHAOS-TABLE")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_wrathtable: getTranslationByKey("WRATH-TABLE")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_rollbasic: getTranslationByKey("ROLL-BASIC-TABLES")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_rollextended: getTranslationByKey("ROLL-EXTENDED-TABLES")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_yes: getTranslationByKey("YES")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_no: getTranslationByKey("NO")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_minor: getTranslationByKey("MINOR-NORMAL")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_major: getTranslationByKey("MAJOR-NORMAL")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_cata: getTranslationByKey("CATASTROPHIC-NORMAL")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_minorextended: getTranslationByKey("MINOR-EXTENDED")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_majorextended: getTranslationByKey("MAJOR-EXTENDED")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_cataextended: getTranslationByKey("CATASTROPHIC-EXTENDED")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_wrath: getTranslationByKey("WRATH")});});
-	on("sheet:opened", function(eventInfo){setAttrs({translation_vengeance: getTranslationByKey("VENGEANCE")});});
-</script>
-<!-- REPEATING SCRIPT -->
-<script type="text/worker">
-	/* ---- BEGIN: TheAaronSheet.js ---- */
-	// Github:   https://github.com/shdwjk/TheAaronSheet/blob/master/TheAaronSheet.js
-	// By:       The Aaron, Arcane Scriptomancer
-	// Contact:  https://app.roll20.net/users/104025/the-aaron
-	
-	var TAS = TAS || (function(){
-		'use strict';
-		
-		var version = '0.2.5',
-			lastUpdate = 1504710542,
-			
-			loggingSettings = {
-				debug: {
-					key:     'debug',
-					title:   'DEBUG',
-					color: {
-						bgLabel: '#7732A2',
-						label:   '#F2EF40',
-						bgText:  '#FFFEB7',
-						text:    '#7732A2'
-					}
-				},
-				error: {
-					key:     'error',
-					title:   'Error',
-					color: {
-						bgLabel: '#C11713',
-						label:   'white',
-						bgText:  '#C11713',
-						text:    'white'
-					}
-				},
-				warn: {
-					key:     'warn',
-					title:   'Warning',
-					color: {
-						bgLabel: '#F29140',
-						label:   'white',
-						bgText:  '#FFD8B7',
-						text:    'black'
-					}
-				},
-				info: {
-					key:     'info',
-					title:   'Info',
-					color: {
-						bgLabel: '#413FA9',
-						label:   'white',
-						bgText:  '#B3B2EB',
-						text:    'black'
-					}
-				},
-				notice: {
-					key:     'notice',
-					title:   'Notice',
-					color: {
-						bgLabel: '#33C133',
-						label:   'white',
-						bgText:  '#ADF1AD',
-						text:    'black'
-					}
-				},
-				log: {
-					key:     'log',
-					title:   'Log',
-					color: {
-						bgLabel: '#f2f240',
-						label:   'black',
-						bgText:  '#ffff90',
-						text:    'black'
-					}
-				},
-				callstack: {
-					key:     'TAS',
-					title:   'function',
-					color: {
-						bgLabel: '#413FA9',
-						label:   'white',
-						bgText:  '#B3B2EB',
-						text:    'black'
-					}
-				},
-				callstack_async: {
-					key:     'TAS',
-					title:   'ASYNC CALL',
-					color: {
-						bgLabel: '#413FA9',
-						label:   'white',
-						bgText:  '#413FA9',
-						text:    'white'
-					}
-				}, TAS: { key:     'TAS', title:   'TAS',
-					color: {
-						bgLabel: 'grey',
-						label:   'black;background:linear-gradient(#304352,#d7d2cc,#d7d2cc,#d7d2cc,#304352)',
-						bgText:  'grey',
-						text:    'black;background:linear-gradient(#304352,#d7d2cc,#d7d2cc,#d7d2cc,#304352)'
-					}
-				}
-			},
-			
-			config = {
-				debugMode: false,
-				logging: {
-					log: true,
-					notice: true,
-					info: true,
-					warn: true,
-					error: true,
-					debug: false
-				}
-			},
-			
-			callstackRegistry = [],
-			queuedUpdates = {}, //< Used for delaying saves till the last moment.
-			
-		complexType = function(o){
-			switch(typeof o){
-				case 'string':
-					return 'string';
-				case 'boolean':
-					return 'boolean';
-				case 'number':
-					return (_.isNaN(o) ? 'NaN' : (o.toString().match(/\./) ? 'decimal' : 'integer'));
-				case 'function':
-					return 'function: '+(o.name ? o.name+'()' : '(anonymous)');
-				case 'object':
-					return (_.isArray(o) ? 'array' : (_.isArguments(o) ? 'arguments' : ( _.isNull(o) ? 'null' : 'object')));
-				default:
-					return typeof o;
-			}
-		},
-		
-		dataLogger = function(primaryLogger,secondaryLogger,data){
-			_.each(data,function(m){
-				var type = complexType(m);
-				switch(type){
-					case 'string':
-						primaryLogger(m);
-						break;
-					case 'undefined':
-					case 'null':
-					case 'NaN':
-						primaryLogger('['+type+']');
-						break;
-					case 'number':
-					case 'not a number':
-					case 'integer':
-					case 'decimal':
-					case 'boolean':
-						primaryLogger('['+type+']: '+m);
-						break;
-					default:
-						primaryLogger('['+type+']:=========================================');
-						secondaryLogger(m);
-						primaryLogger('=========================================================');
-						break;
-				}
-			});
-		},
-		
-		colorLog = function(options){
-			var coloredLoggerFunction,
-				key = options.key,
-				label = options.title || 'TAS',
-				lBGColor = (options.color && options.color.bgLabel) || 'blue',
-				lTxtColor = (options.color && options.color.label) || 'white',
-				mBGColor = (options.color && options.color.bgText) || 'blue',
-				mTxtColor = (options.color && options.color.text) || 'white';
-				
-			coloredLoggerFunction = function(message){
-				/* eslint-disable no-console */
-				console.log(
-					'%c '+label+': %c '+message + ' ',
-					'background-color: '+lBGColor+';color: '+lTxtColor+'; font-weight:bold;',
-					'background-color: '+mBGColor+';color: '+mTxtColor+';'
-				); 
-				/* eslint-enable no-console */
-			};
-			return function(){
-				if('TAS'===key || config.logging[key]){
-					/* eslint-disable no-console */
-				   dataLogger(coloredLoggerFunction,function(m){console.log(m);},_.toArray(arguments)); 
-					/* eslint-enable no-console */
-				}
-			};
-		},
-		
-		logDebug  = colorLog(loggingSettings.debug),
-		logError  = colorLog(loggingSettings.error),
-		logWarn   = colorLog(loggingSettings.warn),
-		logInfo   = colorLog(loggingSettings.info),
-		logNotice = colorLog(loggingSettings.notice),
-		logLog    = colorLog(loggingSettings.log),
-		log       = colorLog(loggingSettings.TAS),
-		logCS     = colorLog(loggingSettings.callstack),
-		logCSA    = colorLog(loggingSettings.callstack_async),
-		
-		registerCallstack = function(callstack,label){
-			var idx=_.findIndex(callstackRegistry,function(o){
-				return (_.difference(o.stack,callstack).length === _.difference(callstack,o.stack).length) &&
-					_.difference(o.stack,callstack).length === 0 &&
-					o.label === label;
-			});
-			if(-1 === idx){
-				idx=callstackRegistry.length;
-				callstackRegistry.push({
-					stack: callstack,
-					label: label
-				});
-			}
-			return idx;
-		},
-		
-		setConfigOption = function(options){
-			var newconf =_.defaults(options,config);
-			newconf.logging=_.defaults(
-				(options && options.logging)||{},
-				config.logging
-			);
-			config=newconf;
-		},
-		
-		isDebugMode = function(){
-			return config.debugMode;
-		},
-		
-		debugMode = function(){
-			config.logging.debug=true;
-			config.debugMode = true;
-		},
-		
-		getCallstack = function(){
-			var e = new Error('dummy'),
-				stack = _.map(_.rest(e.stack.replace(/^[^(]+?[\n$]/gm, '')
-				.replace(/^\s+at\s+/gm, '')
-				.replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
-				.split('\n')),function(l){
-					return l.replace(/\s+.*$/,'');
-				});
-			return stack;
-		},
-		logCallstackSub = function(cs){
-			var matches, csa;
-			_.find(cs,function(line){
-				matches = line.match(/TAS_CALLSTACK_(\d+)/);
-				if(matches){
-				   csa=callstackRegistry[matches[1]];
-				   logCSA( '===================='+(csa.label ? '> '+csa.label+' <' : '')+'====================');
-				   logCallstackSub(csa.stack);
-				   return true;
-				} 
-				logCS(line);
-				return false;
-			});
-		},
-		logCallstack = function(){
-			var cs;
-			if(config.debugMode){
-				cs = getCallstack();
-				cs.shift();
-				log('==============================> CALLSTACK <==============================');
-				logCallstackSub(cs);
-				log('=========================================================================');
-			}
-		},
-		
-		wrapCallback = function (label, callback, context){
-			var callstack;
-			if('function' === typeof label){
-				context=callback;
-				callback=label;
-				label=undefined;
-			}
-			if(!config.debugMode){
-				return (function(cb,ctx){
-					return function(){
-						cb.apply(ctx||{},arguments);
-					};
-				}(callback,context));
-			}
-			
-			callstack = getCallstack();
-			callstack.shift();
-			
-			return (function(cb,ctx,cs,lbl){
-				var ctxref=registerCallstack(cs,lbl);
-				
-				/*jshint -W054 */
-				return new Function('cb','ctx','TASlog',
-					"return function TAS_CALLSTACK_"+ctxref+"(){"+
-						"var start,end;"+
-						"TASlog('Entering: '+(cb.name||'(anonymous function)'));"+
-						"start=_.now();"+
-						"cb.apply(ctx||{},arguments);"+
-						"end=_.now();"+
-						"TASlog('Exiting: '+(cb.name||'(anonymous function)')+' :: '+(end-start)+'ms elapsed');"+
-					"};")(cb,ctx,log);
-				/*jshint +W054 */
-			}(callback,context,callstack,label));
-		},
-		
-		prepareUpdate = function( attribute, value ){
-			queuedUpdates[attribute]=value;
-		},
-		
-		applyQueuedUpdates = function() {
-		  setAttrs(queuedUpdates);
-		  queuedUpdates = {};
-		},
-		
-		namesFromArgs = function(args,base){
-			return _.chain(args)
-				.reduce(function(memo,attr){
-					if('string' === typeof attr) {
-						memo.push(attr);
-					} else if(_.isArray(args) || _.isArguments(args)){
-						memo = namesFromArgs(attr,memo);
-					}
-					return memo;
-				},(_.isArray(base) && base) || [])
-				.uniq()
-				.value();
-		},
-		
-		addId = function(obj,value){
-			Object.defineProperty(obj,'id',{
-				value: value,
-				writable: false,
-				enumerable: false
-			});
-		},
-		
-		addProp = function(obj,prop,value,fullname){
-			(function(){
-				var pname=(_.contains(['S','F','I','D'],prop) ? '_'+prop : prop),
-					full_pname = fullname || prop,
-					pvalue=value;
-					
-				_.each(['S','I','F'],function(p){
-					if( !_.has(obj,p)){
-						Object.defineProperty(obj, p, {
-							value: {},
-							enumerable: false,
-							readonly: true
-						});
-					}
-				});
-				if( !_.has(obj,'D')){
-					Object.defineProperty(obj, 'D', {
-						value: _.reduce(_.range(10),function(m,d){
-								Object.defineProperty(m, d, {
-									value: {},
-									enumerable: true,
-									readonly: true
-								});
-								return m;
-							},{}),
-						enumerable: false,
-						readonly: true
-					});
-				}
-				
-				// Raw value
-				Object.defineProperty(obj, pname, {
-					enumerable: true,
-					set: function(v){
-						if(v!==pvalue) {
-							pvalue=v;
-							prepareUpdate(full_pname,v);
-						}
-					},
-					get: function(){
-						return pvalue;
-					}
-				});
-				
-				// string value
-				Object.defineProperty(obj.S, pname, {
-					enumerable: true,
-					set: function(v){
-						var val=v.toString();
-						if(val !== pvalue) {
-							pvalue=val;
-							prepareUpdate(full_pname,val);
-						}
-					},
-					get: function(){
-						return pvalue.toString();
-					}
-				});
-				
-				// int value
-				Object.defineProperty(obj.I, pname, {
-					enumerable: true,
-					set: function(v){
-						var val=parseInt(v,10) || 0;
-						if(val !== pvalue){
-							pvalue=val;
-							prepareUpdate(full_pname,val);
-						}
-					},
-					get: function(){
-						return parseInt(pvalue,10) || 0;
-					}
-				});
-				
-				// float value
-				Object.defineProperty(obj.F, pname, {
-					enumerable: true,
-					set: function(v){
-						var val=parseFloat(v) || 0;
-						if(val !== pvalue) {
-							pvalue=val;
-							prepareUpdate(full_pname,val);
-						}
-					},
-					get: function(){
-						return parseFloat(pvalue) || 0;
-					}
-				});
-				_.each(_.range(10),function(d){
-					Object.defineProperty(obj.D[d], pname, {
-						enumerable: true,
-						set: function(v){
-							var val=(parseFloat(v) || 0).toFixed(d);
-							if(val !== pvalue){
-								pvalue=val;
-								prepareUpdate(full_pname,val);
-							}
-						},
-						get: function(){
-							return (parseFloat(pvalue) || 0).toFixed(d);
-						}
-					});
-				});
-				
-			}());
-		},
-		
-		repeating = function( section ) {
-			return (function(s){
-				var sectionName = s,
-					attrNames = [],
-					fieldNames = [],
-					operations = [],
-					after = [],
-				
-				repAttrs = function TAS_Repeating_Attrs(){
-					attrNames = namesFromArgs(arguments,attrNames);
-					log(attrNames)
-					return this;
-				},
-				repFields = function TAS_Repeating_Fields(){
-					fieldNames = namesFromArgs(arguments,fieldNames);
-					log(fieldNames)
-					return this;
-				},
-				repReduce = function TAS_Repeating_Reduce(func, initial, final, context) { 
-					operations.push({
-						type: 'reduce',
-						func: (func && _.isFunction(func) && func) || _.noop,
-						memo: (_.isUndefined(initial) && 0) || initial,
-						final: (final && _.isFunction(final) && final) || _.noop,
-						context: context || {}
-					});
-					return this;
-				},
-				repMap = function TAS_Repeating_Map(func, final, context) {
-					operations.push({
-						type: 'map',
-						func: (func && _.isFunction(func) && func) || _.noop,
-						final: (final && _.isFunction(final) && final) || _.noop,
-						context: context || {}
-					});
-					return this;
-				},
-				repEach = function TAS_Repeating_Each(func, final, context) {
-					operations.push({
-						type: 'each',
-						func: (func && _.isFunction(func) && func) || _.noop,
-						final: (final && _.isFunction(final) && final) || _.noop,
-						context: context || {}
-					});
-					return this;
-				},
-				repTap = function TAS_Repeating_Tap(final, context) {
-					operations.push({
-						type: 'tap',
-						final: (final && _.isFunction(final) && final) || _.noop,
-						context: context || {}
-					});
-					return this;
-				},
-				repAfter = function TAS_Repeating_After(callback,context) {
-					after.push({
-						callback: (callback && _.isFunction(callback) && callback) || _.noop,
-						context: context || {}
-					});
-					return this;
-				},
-				repExecute = function TAS_Repeating_Execute(callback,context){
-					var rowSet = {},
-						attrSet = {},
-						fieldIds = [],
-						fullFieldNames = [];
-						
-					repAfter(callback,context);
-					
-					// call each operation per row.
-					// call each operation's final
-					getSectionIDs("repeating_"+sectionName,function(ids){
-						fieldIds = ids;
-						fullFieldNames = _.reduce(fieldIds,function(memo,id){
-							return memo.concat(_.map(fieldNames,function(name){
-								return 'repeating_'+sectionName+'_'+id+'_'+name;  
-							}));
-						},[]);
-						getAttrs( _.uniq(attrNames.concat(fullFieldNames)), function(values){
-							_.each(attrNames,function(aname){
-								if(values.hasOwnProperty(aname)){
-									addProp(attrSet,aname,values[aname]);
-								}
-							});
-							
-							rowSet = _.reduce(fieldIds,function(memo,id){
-								var r={};
-								addId(r,id);
-								_.each(fieldNames,function(name){
-									var fn = 'repeating_'+sectionName+'_'+id+'_'+name;  
-									addProp(r,name,values[fn],fn);
-								});
-								
-								memo[id]=r;
-								
-								return memo;
-							},{});
-							
-							_.each(operations,function(op){
-								var res;
-								switch(op.type){
-									case 'tap':
-										_.bind(op.final,op.context,rowSet,attrSet)();
-										break;
-										
-									case 'each':
-										_.each(rowSet,function(r){
-											_.bind(op.func,op.context,r,attrSet,r.id,rowSet)();
-										});
-										_.bind(op.final,op.context,rowSet,attrSet)();
-										break;
-										
-									case 'map':
-										res = _.map(rowSet,function(r){
-											return _.bind(op.func,op.context,r,attrSet,r.id,rowSet)();
-										});
-										_.bind(op.final,op.context,res,rowSet,attrSet)();
-										break;
-										
-									case 'reduce':
-										res = op.memo;
-										_.each(rowSet,function(r){
-											res = _.bind(op.func,op.context,res,r,attrSet,r.id,rowSet)();
-										});
-										_.bind(op.final,op.context,res,rowSet,attrSet)();
-										break;
-								}
-							});
-							
-							// finalize attrs
-							applyQueuedUpdates();
-							_.each(after,function(op){
-								_.bind(op.callback,op.context)();
-							});
-						});
-					});
-				};
-					
-				return {
-					attrs: repAttrs,
-					attr: repAttrs,
-					
-					column: repFields,
-					columns: repFields,
-					field: repFields,
-					fields: repFields,
-					
-					reduce: repReduce,
-					inject: repReduce,
-					foldl: repReduce,
-					
-					map: repMap,
-					collect: repMap,
-					
-					each: repEach,
-					forEach: repEach,
-					
-					tap: repTap,
-					'do': repTap,
-					
-					after: repAfter,
-					last: repAfter,
-					done: repAfter,
-					
-					execute: repExecute,
-					go: repExecute,
-					run: repExecute
-				};
-			}(section));
-		},
-		
-		repeatingSimpleSum = function(section, field, destination){
-			repeating(section)
-				.attr(destination)
-				.field(field)
-				.reduce(function(m,r){
-					return m + (r.F[field]);
-				},0,function(t,r,a){
-					a.S[destination]=t;
-				})
-				.execute();
-		};
-		
-		/* eslint-disable no-console */
-		console.log('%c•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸  The Aaron Sheet  v'+version+'  ¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•','background: linear-gradient(to right,green,white,white,green); color:black;text-shadow: 0 0 8px white;');
-		console.log('%c•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸  Last update: '+(new Date(lastUpdate*1000))+'  ¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•','background: linear-gradient(to right,green,white,white,green); color:black;text-shadow: 0 0 8px white;');
-		/* eslint-enable no-console */
-		
-		return {
-			/* Repeating Sections */
-			repeatingSimpleSum: repeatingSimpleSum,
-			repeating: repeating,
-			
-			/* Configuration */
-			config: setConfigOption,
-			
-			/* Debugging */
-			callback: wrapCallback,
-			callstack: logCallstack,
-			debugMode: debugMode,
-			isDebugMode: isDebugMode,
-			_fn: wrapCallback,
-			
-			/* Logging */
-			debug: logDebug,
-			error: logError,
-			warn: logWarn,
-			info: logInfo,
-			notice: logNotice,
-			log: logLog
-		};
-	}());
-	
-	/* ---- END: TheAaronSheet.js ---- */
-	
-//	on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) {/
-//		TAS.repeatingSimpleSum('inventory', 'inventoryweight_repeat', 'calc_inventorycarried');
-//	});
-	
-    on("sheet:opened change:repeating_melee remove:repeating_melee", function(){
-        TAS.repeatingSimpleSum('melee','MeleeEnc','EncMelee');
-    });
-        
-    on("sheet:opened change:repeating_ranged remove:repeating_ranged", function(){
-        TAS.repeatingSimpleSum('ranged','RangedEnc','EncRanged');
-    });        
-    
-//     on("sheet:opened change:strength", function() {
-//   getAttrs(["Strength", "Level"], function(values) {
-//       setAttrs({
-//           StrengthMod: Math.floor(values.Strength / 2)
-//       });
-//   });
-});
-//});
-	
-</script>
-<!-- UTILITY SCRIPT -->
-<script type="text/worker">
-	on("sheet:opened change:trappings_layout", function() {
-		getAttrs(["trappings_layout", "trappings_layout_old"], function(values) {
-			if(values.trappings_layout == 1) {
-				setAttrs({
-					trappings_layout_old: 1
-				})
-			}
-			else {
-				setAttrs({
-					trappings_layout_old: 0
-				})
-			}
-		});
-	});
-</script>
-
 <rolltemplate class="sheet-rolltemplate-whfrp2e">
 	<div class="sheet-rt-card">
 		<div class="sheet-rt-header sheet-relative {{#chartest}} sheet-ability{{/chartest}}{{#skilltest}} sheet-action{{/skilltest}}{{#attacktest}} sheet-attack{{/attacktest}}{{#fumbleroll}} sheet-weapon{{/fumbleroll}}{{#amputationroll}} sheet-weapon{{/amputationroll}}{{#critroll}} sheet-weapon{{/critroll}}{{#spelltest}} sheet-spell{{/spelltest}}{{#inscribetest}} sheet-spell{{/inscribetest}}{{#arcanemark}} sheet-spell{{/arcanemark}}{{#godmark}} sheet-spell{{/godmark}}{{#bloodloss}} sheet-action{{/bloodloss}}">
@@ -7979,7 +7265,7 @@
 					{{#rollBetween() critroll 61 65}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="MAJOR-EAR-WOUND">Major Ear Wound</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MAJOR-EAR-WOUND-DESC">The blow damages your ear, leaving you with permanent hearing loss in one ear. Suffer a –20 penalty on all Tests relating to hearing. If you suffer this result again, your hearing is permanently lost as the second ear falls quiet. Only magic can heal this.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MAJOR-EAR-WOUND-DESC">The blow damages your ear, leaving you with permanent hearing loss in one ear. Suffer a ֲ0 penalty on all Tests relating to hearing. If you suffer this result again, your hearing is permanently lost as the second ear falls quiet. Only magic can heal this.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -7989,7 +7275,7 @@
 					{{#rollBetween() critroll 66 70}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="BROKEN-NOSE">Broken Nose</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BROKEN-NOSE-DESC">A solid blow to the centre of your face causing blood to pour. Gain 2 Bleeding Conditions. Make a Challenging (+0) Endurance Test, or also gain a Stunned Condition. After this wound has healed, gain +1/–1SL on social rolls, depending on context, unless Surgery is used to reset the nose. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BROKEN-NOSE-DESC">A solid blow to the centre of your face causing blood to pour. Gain 2 Bleeding Conditions. Make a Challenging (+0) Endurance Test, or also gain a Stunned Condition. After this wound has healed, gain +1/ֱSL on social rolls, depending on context, unless Surgery is used to reset the nose. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8019,7 +7305,7 @@
 					{{#rollBetween() critroll 81 85}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="SMASHED-MOUTH">Smashed Mouth</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SMASHED-MOUTH-DESC">With a sickening crunch, your mouth is suddenly filled with broken teeth and blood. Gain 2 Bleeding Conditions. Lose 1d10 teeth — Amputation (Easy).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SMASHED-MOUTH-DESC">With a sickening crunch, your mouth is suddenly filled with broken teeth and blood. Gain 2 Bleeding Conditions. Lose 1d10 teeth נAmputation (Easy).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8029,7 +7315,7 @@
 					{{#rollBetween() critroll 86 90}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="MANGLED-EAR">Mangled Ear</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-EAR-DESC">Little is left of your ear as the blow tears it apart. You gain 3 Deafened and 2 Bleeding Conditions. Lose your ear —Amputation (Average).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-EAR-DESC">Little is left of your ear as the blow tears it apart. You gain 3 Deafened and 2 Bleeding Conditions. Lose your ear ؁mputation (Average).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8039,7 +7325,7 @@
 					{{#rollBetween() critroll 91 93}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="DEVASTATED-EYE">Devastated Eye</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DEVASTATED-EYE-DESC">A strike to your eye completely bursts it, causing extraordinary pain. Gain 3 Blinded , 2 Bleeding , and 1 Stunned Condition. Lose your eye — Amputation (Difficult)</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DEVASTATED-EYE-DESC">A strike to your eye completely bursts it, causing extraordinary pain. Gain 3 Blinded , 2 Bleeding , and 1 Stunned Condition. Lose your eye נAmputation (Difficult)</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8049,7 +7335,7 @@
 					{{#rollBetween() critroll 94 96}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="DISFIGURING-BLOW">Disfiguring Blow</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISFIGURING-BLOW-DESC">The blow smashes your entire face, destroying your eye and nose in a cloud of blood. Gain 3 Bleeding , 3 Blinded and 2 Stunned Conditions. Lose your eye and nose — Amputation (Hard).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISFIGURING-BLOW-DESC">The blow smashes your entire face, destroying your eye and nose in a cloud of blood. Gain 3 Bleeding , 3 Blinded and 2 Stunned Conditions. Lose your eye and nose נAmputation (Hard).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8059,7 +7345,7 @@
 					{{#rollBetween() critroll 97 99}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="MANGLED-JAW">Disfiguring Blow</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-JAW-DESC">The blow almost removes your jaw as it utterly destroys your tongue, sending teeth flying in a shower of blood. Gain 4 Bleeding and 3 Stunned Conditions. Make a Very Hard (–30) Endurance Test or gain an Unconscious Condition. Suffer a Broken Bone (Major) injury and lose your tongue and 1d10 teeth — Amputation (Hard).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-JAW-DESC">The blow almost removes your jaw as it utterly destroys your tongue, sending teeth flying in a shower of blood. Gain 4 Bleeding and 3 Stunned Conditions. Make a Very Hard (ֳ0) Endurance Test or gain an Unconscious Condition. Suffer a Broken Bone (Major) injury and lose your tongue and 1d10 teeth נAmputation (Hard).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8111,7 +7397,7 @@
 					{{#rollBetween() critroll 26 30}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="BADLY-JARRED-ARM">Badly Jarred Arm</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BADLY-JARRED-ARM-DESC">Your arm is badly jarred in the attack. Drop whatever was held in that hand, which is useless for 1d10–TB rounds (minimum 1). For this time, treat the hand as lost (see Amputated Part).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BADLY-JARRED-ARM-DESC">Your arm is badly jarred in the attack. Drop whatever was held in that hand, which is useless for 1d10הB rounds (minimum 1). For this time, treat the hand as lost (see Amputated Part).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8161,7 +7447,7 @@
 					{{#rollBetween() critroll 51 55}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="CLEAN-BREAK">Clean Break</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CLEAN-BREAK-DESC">An audible crack resounds as the blow strikes your arm. Drop whatever was held in the associated hand and gain a Broken Bone (Minor) injury. Pass a Difficult (–10) Endurance Test or gain a Stunned Condition.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CLEAN-BREAK-DESC">An audible crack resounds as the blow strikes your arm. Drop whatever was held in the associated hand and gain a Broken Bone (Minor) injury. Pass a Difficult (ֱ0) Endurance Test or gain a Stunned Condition.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8181,7 +7467,7 @@
 					{{#rollBetween() critroll 61 65}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="DEEP-CUT">Deep Cut</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DEEP-CUT-DESC">Gain 2 Bleeding Conditions as your arm is mangled. Gain 1 Stunned Condition and suffer a Torn Muscle (Minor) injury. Take a Hard (–20) Endurance Test or gain the Unconscious Condition. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DEEP-CUT-DESC">Gain 2 Bleeding Conditions as your arm is mangled. Gain 1 Stunned Condition and suffer a Torn Muscle (Minor) injury. Take a Hard (ֲ0) Endurance Test or gain the Unconscious Condition. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8211,7 +7497,7 @@
 					{{#rollBetween() critroll 76 80}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="DISLOCATED-SHOULDER">Dislocated Shoulder</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISLOCATED-SHOULDER-DESC">Your arm is wrenched out of its socket. Pass a Hard (–20) Endurance Test or gain the Stunned and Prone Condition. Drop whatever is held in that hand: the arm is useless and counts as lost (see Amputated Part). Gain 1 Stunned Condition until you receive Medical Attention. After this initial Medical Attention, an Extended Routine (+20) Heal Test needing 6 SL is required to reset the arm, at which point you regain its use. Tests made using this arm suffer a –10 penalty for 1d10 days. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISLOCATED-SHOULDER-DESC">Your arm is wrenched out of its socket. Pass a Hard (ֲ0) Endurance Test or gain the Stunned and Prone Condition. Drop whatever is held in that hand: the arm is useless and counts as lost (see Amputated Part). Gain 1 Stunned Condition until you receive Medical Attention. After this initial Medical Attention, an Extended Routine (+20) Heal Test needing 6 SL is required to reset the arm, at which point you regain its use. Tests made using this arm suffer a ֱ0 penalty for 1d10 days. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8221,7 +7507,7 @@
 					{{#rollBetween() critroll 81 85}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="SEVERED-FINGER">Severed Finger</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SEVERED-FINGER-DESC">You gape in horror as a finger flies — Amputation (Average). Gain a Bleeding condition.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SEVERED-FINGER-DESC">You gape in horror as a finger flies נAmputation (Average). Gain a Bleeding condition.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8231,7 +7517,7 @@
 					{{#rollBetween() critroll 86 90}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="CLEFT-HAND">Cleft Hand</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CLEFT-HAND-DESC">Your hand splays open from the blow. Lose 1 finger —Amputation (Difficult). Gain 2 Bleeding and 1 Stunned Condition.  For every succeeding Round in which you don't receive Medical Attention, you lose another finger as the wound tears; if you run out of fingers, you lose the hand — Amputation (Difficult).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CLEFT-HAND-DESC">Your hand splays open from the blow. Lose 1 finger ؁mputation (Difficult). Gain 2 Bleeding and 1 Stunned Condition.  For every succeeding Round in which you don't receive Medical Attention, you lose another finger as the wound tears; if you run out of fingers, you lose the hand נAmputation (Difficult).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8251,7 +7537,7 @@
 					{{#rollBetween() critroll 94 96}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="MANGLED-HAND">Mangled Hand</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-HAND-DESC">Your hand is left a mauled, bleeding mess. You lose your hand —Amputation (Hard). Gain 2 Bleeding Condition. Take a Hard (–20) Endurance Test or gain the Stunned and Prone Conditions. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="MANGLED-HAND-DESC">Your hand is left a mauled, bleeding mess. You lose your hand ؁mputation (Hard). Gain 2 Bleeding Condition. Take a Hard (ֲ0) Endurance Test or gain the Stunned and Prone Conditions. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8261,7 +7547,7 @@
 					{{#rollBetween() critroll 97 99}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="SLICED-TENDONS">Sliced Tendons</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SLICED-TENDONS-DESC">Your tendons are cut by the blow, leaving your arm hanging useless — Amputation (Very Hard). Gain 3 Bleeding , 1 Prone , and 1 Stunned Condition. Pass a Hard (–20) Endurance Test or gain the Unconscious Condition.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SLICED-TENDONS-DESC">Your tendons are cut by the blow, leaving your arm hanging useless נAmputation (Very Hard). Gain 3 Bleeding , 1 Prone , and 1 Stunned Condition. Pass a Hard (ֲ0) Endurance Test or gain the Unconscious Condition.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8333,7 +7619,7 @@
 					{{#rollBetween() critroll 36 40}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="BRUISED-RIBS">Bruised Ribs</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BRUISED-RIBS-DESC">All Agility-based Tests suffer a –10 penalty for 1d10 days.	</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BRUISED-RIBS-DESC">All Agility-based Tests suffer a ֱ0 penalty for 1d10 days.	</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8383,7 +7669,7 @@
 					{{#rollBetween() critroll 61 65}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="PAINFUL-CUT">Painful Cut</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="PAINFUL-CUT-DESC"> Gain 2 Bleeding Conditions and the Stunned Condition. Take a Hard (–20) Endurance Test or gain the Unconscious Condition as you black out from the pain. Unless you achieve 4+ SL, you also scream out in agony.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="PAINFUL-CUT-DESC"> Gain 2 Bleeding Conditions and the Stunned Condition. Take a Hard (ֲ0) Endurance Test or gain the Unconscious Condition as you black out from the pain. Unless you achieve 4+ SL, you also scream out in agony.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8485,7 +7771,7 @@
 					{{#rollBetween() critroll 01 10}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="STUBBED-TOE">Stubbed Toe</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="STUBBED-TOE-DESC">In the scuffle, you stub your toe. Pass a Routine (+20) Endurance Test or suffer –10 on Agility Tests until the end of the next turn. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="STUBBED-TOE-DESC">In the scuffle, you stub your toe. Pass a Routine (+20) Endurance Test or suffer ֱ0 on Agility Tests until the end of the next turn. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8495,7 +7781,7 @@
 					{{#rollBetween() critroll 11 20}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="TWISTED-ANKLE">Twisted Ankle</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="TWISTED-ANKLE-DESC">You go over your ankle, hurting it. Agility Tests suffer a –10  penalty for 1d10 rounds. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="TWISTED-ANKLE-DESC">You go over your ankle, hurting it. Agility Tests suffer a ֱ0  penalty for 1d10 rounds. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8545,7 +7831,7 @@
 					{{#rollBetween() critroll 41 45}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="TWISTED-KNEE">Twisted Knee</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="TWISTED-KNEE-DESC">You twist your knee too far. Agility Tests suffer a –20 penalty for 1d10 rounds.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="TWISTED-KNEE-DESC">You twist your knee too far. Agility Tests suffer a ֲ0 penalty for 1d10 rounds.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8555,7 +7841,7 @@
 					{{#rollBetween() critroll 46 50}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="BADLY-CUT-TOE">Badly Cut Toe</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BADLY-CUT-TOE-DESC">Gain 1 Bleeding Condition. After the encounter, make a Challenging (+0) Endurance Test. If you fail, lose 1 toe —Amputation (Average).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="BADLY-CUT-TOE-DESC">Gain 1 Bleeding Condition. After the encounter, make a Challenging (+0) Endurance Test. If you fail, lose 1 toe ؁mputation (Average).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8585,7 +7871,7 @@
 					{{#rollBetween() critroll 61 65}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="HACKED-LEG">Hacked Leg</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="HACKED-LEG-DESC">A cut bites down into the hip. Gain 2 Bleeding , 1 Prone Condition, and suffer a Broken Bone (Minor) injury. Further, take a Hard (–20) Endurance Test or also gain a Stunned condition from the pain.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="HACKED-LEG-DESC">A cut bites down into the hip. Gain 2 Bleeding , 1 Prone Condition, and suffer a Broken Bone (Minor) injury. Further, take a Hard (ֲ0) Endurance Test or also gain a Stunned condition from the pain.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8605,7 +7891,7 @@
 					{{#rollBetween() critroll 71 75}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="RUPTURED-TENDON">Ruptured Tendon</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="RUPTURED-TENDON-DESC">Gain the Prone and Stunned Condition as one of your tendons tears badly. Pass a Hard (–20) Endurance Test or gain the Unconscious Condition. Your leg is useless (see Amputated Parts). , Suffer a Torn Muscle (Major) injury.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="RUPTURED-TENDON-DESC">Gain the Prone and Stunned Condition as one of your tendons tears badly. Pass a Hard (ֲ0) Endurance Test or gain the Unconscious Condition. Your leg is useless (see Amputated Parts). , Suffer a Torn Muscle (Major) injury.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8635,7 +7921,7 @@
 					{{#rollBetween() critroll 86 90}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="DISLOCATED-KNEE">Dislocated Knee</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISLOCATED-KNEE-DESC">Your knee is wrenched out of its socket. Gain the Prone Condition. Pass a Hard (–20) Endurance Test, or gain the Stunned Condition, which is not removed until you receive Medical Attention. After this initial Medical Attention, an Extended Routine (+20) Heal Test needing 6 SL is required to reset the knee at which point you regain its use. Movement is halved, and Tests made using this leg suffer a –10 penalty for d10 days. </div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="DISLOCATED-KNEE-DESC">Your knee is wrenched out of its socket. Gain the Prone Condition. Pass a Hard (ֲ0) Endurance Test, or gain the Stunned Condition, which is not removed until you receive Medical Attention. After this initial Medical Attention, an Extended Routine (+20) Heal Test needing 6 SL is required to reset the knee at which point you regain its use. Movement is halved, and Tests made using this leg suffer a ֱ0 penalty for d10 days. </div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8645,7 +7931,7 @@
 					{{#rollBetween() critroll 91 93}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="CRUSHED-FOOT">Crushed Foot</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CRUSHED-FOOT-DESC">The blow crushes your foot. Make an Average (+20) Endurance Test; if you fail, gain the Prone condition and lose 1 toe, plus 1 additional toe for each SL below 0 — Amputation (Average). Gain 2 Bleeding Conditions. If you don't receive Surgery within 1d10 days, you will lose the foot entirely.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CRUSHED-FOOT-DESC">The blow crushes your foot. Make an Average (+20) Endurance Test; if you fail, gain the Prone condition and lose 1 toe, plus 1 additional toe for each SL below 0 נAmputation (Average). Gain 2 Bleeding Conditions. If you don't receive Surgery within 1d10 days, you will lose the foot entirely.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8655,7 +7941,7 @@
 					{{#rollBetween() critroll 94 96}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="SEVERED-FOOT">Severed Foot</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SEVERED-FOOT-DESC">Your foot is severed at the ankle and lands 1d10 feet away in a random direction — Amputation (Hard) (see Scatter). You gain 3 Bleeding , 2 Stunned , and 1 Prone Condition.</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="SEVERED-FOOT-DESC">Your foot is severed at the ankle and lands 1d10 feet away in a random direction נAmputation (Hard) (see Scatter). You gain 3 Bleeding , 2 Stunned , and 1 Prone Condition.</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8665,7 +7951,7 @@
 					{{#rollBetween() critroll 97 99}}
 						<div class="sheet-row">
 							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-key-wide" data-i18n="CUT-TENDON">Cut Tendon</div>
-							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CUT-TENDON-DESC">A major tendon at the back of your leg is cut, causing you to scream out in pain as your leg collapses. Gain 2 Bleeding , 2 Stunned , and 1 Prone Condition and look on in horror as your leg never works again — Amputation (Very Hard).</div>
+							<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="CUT-TENDON-DESC">A major tendon at the back of your leg is cut, causing you to scream out in pain as your leg collapses. Gain 2 Bleeding , 2 Stunned , and 1 Prone Condition and look on in horror as your leg never works again נAmputation (Very Hard).</div>
 						</div>
 						<div class="sheet-row">
 							<div class="sheet-col-11-24 sheet-pad-l-md sheet-pad-r-md sheet-rt-key" data-i18n="WOUNDS">Wounds</div>
@@ -8692,17 +7978,17 @@
 				</div>
 				{{#rollBetween() fumbleroll 01 20}}
 					<div class="sheet-row">
-						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-20-DESC">You catch a part of your anatomy while making your attack — lose 1 Wound, ignoring Toughness Bonus or Armour Points. </div>
+						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-20-DESC">You catch a part of your anatomy while making your attack נlose 1 Wound, ignoring Toughness Bonus or Armour Points. </div>
 					</div>
 				{{/rollBetween() fumbleroll 01 20}}	
 				{{#rollBetween() fumbleroll 21 40}}
 					<div class="sheet-row">
-						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-40-DESC">Your melee weapon jars badly, or ranged weapon malfunctions or slightly breaks – your weapon suffers 1 Damage. Next round, you will act last regardless of Initiative order, Talents, or special rules as you recover </div>
+						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-40-DESC">Your melee weapon jars badly, or ranged weapon malfunctions or slightly breaks ֠your weapon suffers 1 Damage. Next round, you will act last regardless of Initiative order, Talents, or special rules as you recover </div>
 					</div>
 				{{/rollBetween() fumbleroll 21 40}}		
 				{{#rollBetween() fumbleroll 41 60}}
 					<div class="sheet-row">
-						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-60-DESC">Your manoeuvre was misjudged, leaving you out of position, or you lose grip of a ranged weapon. Next round, your Action suffers a penalty of –10. </div>
+						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-60-DESC">Your manoeuvre was misjudged, leaving you out of position, or you lose grip of a ranged weapon. Next round, your Action suffers a penalty of ֱ0. </div>
 					</div>
 				{{/rollBetween() fumbleroll 41 60}}		
 				{{#rollBetween() fumbleroll 61 70}}
@@ -8722,7 +8008,7 @@
 				{{/rollBetween() fumbleroll 81 90}}			
 				{{#rollBetween() fumbleroll 91 100}}
 					<div class="sheet-row">
-						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-100-DESC">You completely mess up your attack, hitting 1 random ally in range using your rolled units die to determine the SL of the hit. If that’s not possible, you somehow hit yourself in the face and gain the Stunned Condition </div>
+						<div class="sheet-col-1 sheet-pad-l-md sheet-pad-r-md sheet-rt-value" data-i18n="FUMBLE-100-DESC">You completely mess up your attack, hitting 1 random ally in range using your rolled units die to determine the SL of the hit. If thatӳ not possible, you somehow hit yourself in the face and gain the Stunned Condition </div>
 					</div>
 				{{/rollBetween() fumbleroll 91 100}}					
 			{{/fumbleroll}}
@@ -8986,3 +8272,163 @@
 		</div>
 	</div>
 </rolltemplate>
+
+
+
+<script type="text/worker">
+	//<!-- TRANSLATIONS SCRIPT -->
+	on("sheet:opened", function(eventInfo){
+	    setAttrs({
+	        translation_targetnumber: getTranslationByKey("TARGET-NUMBER"),
+	        translation_modifier: getTranslationByKey("MODIFIER"),
+	        translation_chaostable: getTranslationByKey("CHAOS-TABLE"),
+	        translation_wrathtable: getTranslationByKey("WRATH-TABLE"),
+	        translation_rollbasic: getTranslationByKey("ROLL-BASIC-TABLES"),
+	        translation_rollextended: getTranslationByKey("ROLL-EXTENDED-TABLES"),
+	        translation_yes: getTranslationByKey("YES"),
+	        translation_no: getTranslationByKey("NO"),
+	        translation_minor: getTranslationByKey("MINOR-NORMAL"),
+	        translation_major: getTranslationByKey("MAJOR-NORMAL"),
+	        translation_cata: getTranslationByKey("CATASTROPHIC-NORMAL"),
+	        translation_minorextended: getTranslationByKey("MINOR-EXTENDED"),
+	        translation_majorextended: getTranslationByKey("MAJOR-EXTENDED"),
+	        translation_cataextended: getTranslationByKey("CATASTROPHIC-EXTENDED"),
+	        translation_wrath: getTranslationByKey("WRATH"),
+	        translation_vengeance: getTranslationByKey("VENGEANCE")
+	    });
+	});
+	
+//--- REPEATING SCRIPT ---
+/* ===== PARAMETERS ==========
+destination = the name of the attribute that stores the total quantity
+section = name of repeating fieldset, without the repeating_
+fields = the name of the attribute field to be summed
+      can be a single attribute: 'weight'
+      or an array of attributes: ['weight','number','equipped']
+multiplier (optional) = a multiplier to the entire fieldset total. For instance, if summing coins of weight 0.02, might want to multiply the final total by 0.02.
+*/
+const repeatingSum = (destination, section, fields, multiplier = 1) => {
+    if (!Array.isArray(fields)) fields = [fields];
+    getSectionIDs(`repeating_${section}`, idArray => {
+        const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
+        getAttrs(attrArray, v => {
+            console.log("===== values of v: "+ JSON.stringify(v) +" =====");
+                 // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
+            const getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`], 10) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0); 
+            const sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
+            setAttrs({[destination]: sumTotal * multiplier});    
+        });
+    });
+};
+
+on("sheet:opened change:repeating_melee remove:repeating_melee", function(){
+	repeatingSum('EncMelee', 'melee','MeleeEnc');
+});
+	
+on("sheet:opened change:repeating_ranged remove:repeating_ranged", function(){
+	repeatingSum('EncRanged','ranged','RangedEnc');
+});        
+
+
+on("change:repeating_inventory remove:repeating_inventory", function(eventInfo) {
+    repeatingSum('calc_inventorycarried','inventory',['inventoryweight_repeat','inventorycarried_repeat','inventoryqty_repeat']);
+});
+
+	
+//<!-- UTILITY SCRIPT -->
+	on("sheet:opened change:trappings_layout", function() {
+		getAttrs(["trappings_layout"], function(values) {
+			setAttrs({
+				trappings_layout_old: (values.trappings_layout === '1' ? 1 : 0) 
+			})
+		});
+	});
+
+
+/* STAT MODIFIERS
+This sheet worker loop calculates the values of all the 10 core attributes from their constituent parts, and their modifiers.
+TotalWounds was dependent on a bunch of stats that were autocalc, so they needed to be replaced with sheet workers for it to work.
+
+*/
+const stats = ['WeaponSkill', 'BallisticSkill', 'Strength', 'Toughness', 'Initiative', 'Agility', 'Dexterity', 'Intelligence', 'Willpower', 'Fellowship'];
+stats.forEach(stat => {
+
+	on(`sheet:opened change:${stat.toLowerCase()}start change:${stat.toLowerCase()}talents change:${stat.toLowerCase()}adv change:${stat.toLowerCase()}mod`, function () {
+		getAttrs([`${stat}Start`, `${stat}Talents`, `${stat}Adv`, `${stat}Mod`], function (v) {
+			const start = +v[`${stat}Start`] || 0;
+			const talents = +v[`${stat}Talents`] || 0;
+			const adv = +v[`${stat}Adv`] || 0;
+			const mod = +v[`${stat}Mod`] || 0;
+			const score = start + talents + adv + mod;
+			const bonusstart = Math.floor(score / 10);
+			setAttrs({
+			    [stat]: score,
+				[`${stat}BonusStart`]: bonusstart
+			});
+		});
+	});
+
+	on(`sheet:opened change:${stat.toLowerCase()}bonusstart change:${stat.toLowerCase()}bonusmod`, function () {
+		getAttrs([`${stat}BonusStart`, `${stat}BonusMod`], function (v) {
+			const start = +v[`${stat}BonusStart`] || 0;
+			const mod = +v[`${stat}BonusMod`] || 0;
+			const bonus = start + mod;
+			setAttrs({
+				[`${stat}Bonus`]: bonus
+			});
+		});
+	});
+	
+});
+
+// WOUNDS stat
+on('sheet:opened change:strengthbonus change:toughnessbonus change:willpowerbonus', function () {
+	getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus'], function (v) {
+		const str = +v.StrengthBonus || 0;
+		const tou = +v.ToughnessBonus || 0;
+		const wil = +v.WillPowerBonus || 0;
+		const wounds = str + tou*2 + wil;
+		setAttrs({
+			Wounds: wounds
+		});
+	});
+});
+
+/*
+SIMPLE ADDERS:
+if you have a bunch of attributes that are calculated just by adding two or more other attribute values together,
+you can use this. Just enter the attribute that is the final value, a colon, and then the attributes that are added together as an array.
+*/
+const simpleAdders = {
+	TotalWounds: ['Wounds', 'Modifiers'],
+	TotalDamage: ['Damage','Impale']
+};
+Object.keys(simpleAdders).forEach(attribute => {
+	const adders = simpleAdders[attribute];
+	on(adders.reduce((changes, step) => `${changes} change:${step.toLowerCase()}`,'sheet:opened'), function () {
+		getAttrs(adders, function (v) {
+			const sum = adders.reduce((total,add) => total + (+v[add] || 0), 0);
+			setAttrs({
+				[attribute]: sum
+			});
+		});
+	});
+});
+
+// hidden wound attribute for those who want to handle wounds via TokenBar only
+on('change:totalwounds', function (event) {
+	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
+		const base = +v.TotalWounds || 0;
+		const change = (+event.newValue || 0) - (+event.previousValue || 0);
+		const max = base;
+		const wounds = (+v.CurrentWounds || 0) + change;
+		if (wounds > max) wounds = max;
+		setAttrs({
+			CurrentWounds: wounds,
+			CurrentWounds_max: max
+		});
+	});
+});
+
+
+</script>
