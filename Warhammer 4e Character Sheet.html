@@ -505,31 +505,31 @@
 						<input class="sheet-center" type="number" name="attr_WeaponSkillBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_BallisticSkillBonus" value="@{BallisticSkillBonusStart}+@{BallisticSkillBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_BallisticSkillBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_StrengthBonus" value="@{StrengthBonusStart}+@{StrengthBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_StrengthBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_ToughnessBonus" value="@{ToughnessBonusStart}+@{ToughnessBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_ToughnessBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_InitiativeBonus" value="@{InitiativeBonusStart}+@{InitiativeBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_InitiativeBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_AgilityBonus" value="@{AgilityBonusStart}+@{AgilityBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_AgilityBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_DexterityBonus" value="@{DexterityBonusStart}+@{DexterityBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_DexterityBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_IntelligenceBonus" value="@{IntelligenceBonusStart}+@{IntelligenceBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_IntelligenceBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_WillPowerBonus" value="@{WillPowerBonusStart}+@{WillPowerBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_WillPowerBonus" value="0" readonly/>
 					</div>
 					<div class="sheet-col-1-12 sheet-center sheet-pad-r-sm">
-						<input class="sheet-center" type="number" name="attr_FellowshipBonus" value="@{FellowshipBonusStart}+@{FellowshipBonusMod}" readonly/>
+						<input class="sheet-center" type="number" name="attr_FellowshipBonus" value="0" readonly/>
 					</div>					
 				</div>
                 <!-- Specialization Skills -->
@@ -2894,7 +2894,7 @@
             		</div>
         			<div class="sheet-row">
             			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-            				<input class="sheet-center" type="number" name="attr_Wounds" value="@{StrengthBonus}+@{ToughnessBonus}+@{ToughnessBonus}+@{WillPowerBonus}" readonly />
+            				<input class="sheet-center" type="number" name="attr_Wounds"  readonly />
             			</div>
             			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
             				<input class="sheet-center" type="number" name="attr_Modifiers" value="0"/>
@@ -8393,16 +8393,20 @@ stats.forEach(stat => {
 });
 
 // WOUNDS stat
-on('sheet:opened change:strengthbonus change:toughnessbonus change:willpowerbonus', function () {
-	getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus'], function (v) {
-		const str = +v.StrengthBonus || 0;
-		const tou = +v.ToughnessBonus || 0;
-		const wil = +v.WillPowerBonus || 0;
-		const wounds = str + tou*2 + wil;
-		setAttrs({
-			Wounds: wounds
-		});
-	});
+on('sheet:opened change:race change:strengthbonus change:toughnessbonus change:willpowerbonus', function () {
+    getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus', 'Race'], function (v) {
+        const str = +v.StrengthBonus || 0;
+        const tou = +v.ToughnessBonus || 0;
+        const wil = +v.WillPowerBonus || 0;
+        const race = v.Race.toLowerCase();
+        let wounds = str + tou*2 + wil;
+        if(race === 'halfling') {
+            wounds -= str
+        }         
+        setAttrs({
+            Wounds: wounds
+        });
+    });
 });
 
 /*
@@ -8427,7 +8431,7 @@ Object.keys(simpleAdders).forEach(attribute => {
 });
 
 // hidden wound attribute for those who want to handle wounds via TokenBar only
-on('change:totalwounds', function (event) {
+on('sheet:opened change:totalwounds', function (event) {
 	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
 		const base = +v.TotalWounds || 0;
 		const change = (+event.newValue || 0) - (+event.previousValue || 0);
