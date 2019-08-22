@@ -8323,7 +8323,6 @@ const repeatingSum = (destination, section, fields, multiplier = 1) => {
     getSectionIDs(`repeating_${section}`, idArray => {
         const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
         getAttrs(attrArray, v => {
-            console.log("===== values of v: "+ JSON.stringify(v) +" =====");
                  // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
             const getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`], 10) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0); 
             const sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
@@ -8362,52 +8361,74 @@ TotalWounds was dependent on a bunch of stats that were autocalc, so they needed
 
 */
 const stats = ['WeaponSkill', 'BallisticSkill', 'Strength', 'Toughness', 'Initiative', 'Agility', 'Dexterity', 'Intelligence', 'Willpower', 'Fellowship'];
+let wounds = 0;
 stats.forEach(stat => {
 
-	on(`sheet:opened change:${stat.toLowerCase()}start change:${stat.toLowerCase()}talents change:${stat.toLowerCase()}adv change:${stat.toLowerCase()}mod`, function () {
+	on(`sheet:opened change:race change:${stat.toLowerCase()}start change:${stat.toLowerCase()}talents change:${stat.toLowerCase()}adv change:${stat.toLowerCase()}mod change:${stat.toLowerCase()}bonusmod`, function () {
 		getAttrs([`${stat}Start`, `${stat}Talents`, `${stat}Adv`, `${stat}Mod`], function (v) {
-			const start = +v[`${stat}Start`] || 0;
-			const talents = +v[`${stat}Talents`] || 0;
-			const adv = +v[`${stat}Adv`] || 0;
-			const mod = +v[`${stat}Mod`] || 0;
-			const score = start + talents + adv + mod;
-			const bonusstart = Math.floor(score / 10);
+			const charStart   = +v[`${stat}Start`] || 0;
+			const charTalents = +v[`${stat}Talents`] || 0;
+			const charAdv     = +v[`${stat}Adv`] || 0;
+			const charMod     = +v[`${stat}Mod`] || 0;
+			const charScore   = charStart + charTalents + charAdv + charMod;
+			const bonusStart  = Math.floor(charScore / 10);
 			setAttrs({
-			    [stat]: score,
-				[`${stat}BonusStart`]: bonusstart
+			    [stat]: charScore,
+				[`${stat}BonusStart`]: bonusStart
 			});
-		});
-	});
-
-	on(`sheet:opened change:${stat.toLowerCase()}bonusstart change:${stat.toLowerCase()}bonusmod`, function () {
-		getAttrs([`${stat}BonusStart`, `${stat}BonusMod`], function (v) {
-			const start = +v[`${stat}BonusStart`] || 0;
-			const mod = +v[`${stat}BonusMod`] || 0;
-			const bonus = start + mod;
+			const bonusMod = +v[`${stat}BonusMod`] || 0;
+			const bonus    = bonusStart + bonusMod;
 			setAttrs({
 				[`${stat}Bonus`]: bonus
-			});
+			});		
+            
+            getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus', 'Race'], function (w) {
+                
+                const str = +w.StrengthBonus || 0;
+                const tou = +w.ToughnessBonus || 0;
+                const wil = +w.WillPowerBonus || 0;
+                const race = w.Race.toLowerCase();
+                let wounds = str + tou*2 + wil;
+                if(race === 'halfling') {
+                    wounds -= str
+                }         
+                setAttrs({
+                    Wounds: wounds
+                });
+            })    
 		});
+		console.log(stat)
 	});
-	
+
+// 	on(`sheet:opened change:${stat.toLowerCase()}bonusstart change:${stat.toLowerCase()}bonusmod`, function () {
+// 		getAttrs([`${stat}BonusStart`, `${stat}BonusMod`], function (v) {
+// 			const start = +v[`${stat}BonusStart`] || 0;
+// 			const mod = +v[`${stat}BonusMod`] || 0;
+// 			const bonus = start + mod;
+// 			setAttrs({
+// 				[`${stat}Bonus`]: bonus
+// 			});
+// 		});
+// 	});
+
+    // WOUNDS stat
+    // on('sheet:opened change:race change:strengthbonus change:toughnessbonus change:willpowerbonus', function () {
+    //     getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus', 'Race'], function (v) {
+    //         const str = +v.StrengthBonus || 0;
+    //         const tou = +v.ToughnessBonus || 0;
+    //         const wil = +v.WillPowerBonus || 0;
+    //         const race = v.Race.toLowerCase();
+    //         let wounds = str + tou*2 + wil;
+    //         if(race === 'halfling') {
+    //             wounds -= str
+    //         }         
+    //         setAttrs({
+    //             Wounds: wounds
+    //         });
+    //     });
+    // });	
 });
 
-// WOUNDS stat
-on('sheet:opened change:race change:strengthbonus change:toughnessbonus change:willpowerbonus', function () {
-    getAttrs(['StrengthBonus', 'ToughnessBonus', 'WillPowerBonus', 'Race'], function (v) {
-        const str = +v.StrengthBonus || 0;
-        const tou = +v.ToughnessBonus || 0;
-        const wil = +v.WillPowerBonus || 0;
-        const race = v.Race.toLowerCase();
-        let wounds = str + tou*2 + wil;
-        if(race === 'halfling') {
-            wounds -= str
-        }         
-        setAttrs({
-            Wounds: wounds
-        });
-    });
-});
 
 /*
 SIMPLE ADDERS:
@@ -8431,19 +8452,19 @@ Object.keys(simpleAdders).forEach(attribute => {
 });
 
 // hidden wound attribute for those who want to handle wounds via TokenBar only
-on('sheet:opened change:totalwounds', function (event) {
-	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
-		const base = +v.TotalWounds || 0;
-		const change = (+event.newValue || 0) - (+event.previousValue || 0);
-		const max = base;
-		const wounds = (+v.CurrentWounds || 0) + change;
-		if (wounds > max) wounds = max;
-		setAttrs({
-			CurrentWounds: wounds,
-			CurrentWounds_max: max
-		});
-	});
-});
+// on('sheet:opened change:totalwounds', function (event) {
+// 	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
+// 		const base = +v.TotalWounds || 0;
+// 		const change = (+event.newValue || 0) - (+event.previousValue || 0);
+// 		const max = base;
+// 		const wounds = (+v.CurrentWounds || 0) + change;
+// 		if (wounds > max) wounds = max;
+// 		setAttrs({
+// 			CurrentWounds: wounds,
+// 			CurrentWounds_max: max
+// 		});
+// 	});
+// });
 
 
 </script>
