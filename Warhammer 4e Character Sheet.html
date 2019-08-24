@@ -2900,7 +2900,7 @@
             				<input class="sheet-center" type="number" name="attr_Modifiers" value="0"/>
             			</div>	
             			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-            				<input class="sheet-center" type="number" name="attr_TotalWounds" value="@{Wounds}+@{Modifiers}" readonly />
+            				<input class="sheet-center" type="number" name="attr_TotalWounds" readonly />
             			</div>						
             			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
             				<input class="sheet-center" type="number" name="attr_Damage" value="0"/>
@@ -2909,7 +2909,7 @@
             				<input class="sheet-center" type="number" name="attr_Impale" value="0"/>
             			</div>    
             			<div class="sheet-col-1-6 sheet-center sheet-pad-r-sm">
-            				<input class="sheet-center" type="number" name="attr_TotalDamage" value="@{Damage}+@{Impale}" readonly />
+            				<input class="sheet-center" type="number" name="attr_TotalDamage" readonly />
             			</div>        			
     		        </div>
     		    </div> 
@@ -8361,7 +8361,7 @@ TotalWounds was dependent on a bunch of stats that were autocalc, so they needed
 
 */
 const stats = ['WeaponSkill', 'BallisticSkill', 'Strength', 'Toughness', 'Initiative', 'Agility', 'Dexterity', 'Intelligence', 'Willpower', 'Fellowship'];
-let wounds = 0;
+
 stats.forEach(stat => {
 
 	on(`sheet:opened change:race change:${stat.toLowerCase()}start change:${stat.toLowerCase()}talents change:${stat.toLowerCase()}adv change:${stat.toLowerCase()}mod change:${stat.toLowerCase()}bonusmod`, function () {
@@ -8396,6 +8396,9 @@ stats.forEach(stat => {
                     Wounds: wounds
                 });
             })    
+            
+
+	
 		});
 		console.log(stat)
 	});
@@ -8435,36 +8438,41 @@ SIMPLE ADDERS:
 if you have a bunch of attributes that are calculated just by adding two or more other attribute values together,
 you can use this. Just enter the attribute that is the final value, a colon, and then the attributes that are added together as an array.
 */
-const simpleAdders = {
-	TotalWounds: ['Wounds', 'Modifiers'],
-	TotalDamage: ['Damage','Impale']
-};
-Object.keys(simpleAdders).forEach(attribute => {
-	const adders = simpleAdders[attribute];
-	on(adders.reduce((changes, step) => `${changes} change:${step.toLowerCase()}`,'sheet:opened'), function () {
-		getAttrs(adders, function (v) {
-			const sum = adders.reduce((total,add) => total + (+v[add] || 0), 0);
-			setAttrs({
-				[attribute]: sum
-			});
-		});
-	});
-});
-
-// hidden wound attribute for those who want to handle wounds via TokenBar only
-// on('sheet:opened change:totalwounds', function (event) {
-// 	getAttrs(['TotalWounds', 'CurrentWounds'], function (v) {
-// 		const base = +v.TotalWounds || 0;
-// 		const change = (+event.newValue || 0) - (+event.previousValue || 0);
-// 		const max = base;
-// 		const wounds = (+v.CurrentWounds || 0) + change;
-// 		if (wounds > max) wounds = max;
-// 		setAttrs({
-// 			CurrentWounds: wounds,
-// 			CurrentWounds_max: max
+// const simpleAdders = {
+// 	TotalWounds: ['Wounds', 'Modifiers'],
+// 	TotalDamage: ['Damage','Impale']
+// };
+// Object.keys(simpleAdders).forEach(attribute => {
+// 	const adders = simpleAdders[attribute];
+// 	on(adders.reduce((changes, step) => `${changes} change:${step.toLowerCase()}`,'sheet:opened'), function () {
+// 		getAttrs(adders, function (v) {
+// 			const sum = adders.reduce((total,add) => total + (+v[add] || 0), 0);
+// 			setAttrs({
+// 				[attribute]: sum
+// 			});
 // 		});
 // 	});
 // });
+
+on(`sheet:opened change:wounds change:modifiers change:damage change:impale`, function () {
+
+	getAttrs(['Wounds', 'Modifiers', 'Damage', 'Impale'], function (v) {
+		const totalWounds = (parseInt(v.Wounds) || 0) + (parseInt(v.Modifiers) || 0);
+		let totalDamage = (parseInt(v.Damage) || 0) + (parseInt(v.Impale) || 0);
+		if (totalDamage > totalWounds) totalDamage = totalWounds;
+
+        console.log('Wounds:' + v.Wounds)
+        console.log('Damage:' + v.Damage)
+        console.log('Total Wounds:' + totalWounds)
+        console.log('Total Damage:' + totalDamage)
+		setAttrs({
+			CurrentWounds: totalDamage,
+			CurrentWounds_max: totalWounds,
+			TotalDamage: totalDamage,
+			TotalWounds: totalWounds
+		});
+	});
+});
 
 
 </script>
