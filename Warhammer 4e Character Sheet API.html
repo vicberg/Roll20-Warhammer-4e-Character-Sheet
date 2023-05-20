@@ -2663,7 +2663,7 @@
 					<option value="Tiny">Tiny</option>
 					<option value="Little">Little</option>
 					<option value="Small">Small</option>
-					<option value="Average">Average</option>
+					<option value="Average" selected="selected">Average</option>
 					<option value="Large">Large</option>
 					<option value="Enormous">Enormous</option>
 					<option value="Monstrous">Monstrous</option>
@@ -3102,19 +3102,19 @@
             				<input class="sheet-center" type="checkbox" name="attr_MeleePractical" value="1"/>
             			</div>  
             			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            				<span><button type="roll" class="sheet-roll" name="roll_MeleeAttack" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Attack,target=@{MeleeWeaponSkill},range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
+            				<span><button type="roll" class="sheet-roll" name="roll_MeleeAttack" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Attack,target=[[@{MeleeWeaponSkill}+@{MeleeBonus}]],range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
             			</div>          			
             			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            				<span><button type="roll" class="sheet-roll" name="roll_MeleeUnopposed" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Unopposed,target=@{MeleeWeaponSkill},range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
+            				<span><button type="roll" class="sheet-roll" name="roll_MeleeUnopposed" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Unopposed,target=[[@{MeleeWeaponSkill}+@{MeleeBonus}]],range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
             			</div>
             			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            				<span><button type="roll" class="sheet-roll" name="roll_MeleeMounted" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Mounted,target=@{MeleeWeaponSkill},range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
+            				<span><button type="roll" class="sheet-roll" name="roll_MeleeMounted" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Mounted,target=[[@{MeleeWeaponSkill}+@{MeleeBonus}]],range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
             			</div>
             			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            				<span><button type="roll" class="sheet-roll" name="roll_MeleeDual" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Dual Wield,target=@{MeleeWeaponSkill},range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
+            				<span><button type="roll" class="sheet-roll" name="roll_MeleeDual" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Dual Wield,target=[[@{MeleeWeaponSkill}+@{MeleeBonus}]],range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},charging=?{Charging?|No,no|Yes,yes},practical=@{MeleePractical},qualities=@{MeleeQualities}"</button></span>
             			</div>		
             			<div class="sheet-col-4-100 sheet-center sheet-pad-r-sm sheet-vert-middle">
-            				<span><button type="roll" class="sheet-roll" name="roll_MeleeOpposed" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Oppose,target=@{MeleeWeaponSkill},range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=@{Size}",practical=@{MeleePractical},qualities=@{MeleeQualities}></button></span>
+            				<span><button type="roll" class="sheet-roll" name="roll_MeleeOpposed" value="!whfp4e --name=@{character_name},weapon=@{MeleeWeapon},type=Melee Oppose,target=[[@{MeleeWeaponSkill}+@{MeleeBonus}]],range=@{MeleeReach},strengthBonus=@{StrengthBonus},damageBonus=@{MeleeDamageBonus},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},size=@{Size}",practical=@{MeleePractical},qualities=@{MeleeQualities}></button></span>
             			</div>  						
             		</div>	
             	</fieldset>
@@ -3181,10 +3181,10 @@
             				<input class="sheet-center" type="checkbox" name="attr_RangedPractical" value="1"/>
             			</div>       			
             			<div class="sheet-col-1-25 sheet-center sheet-pad-r-sm">						                                                                   
-            				<button type="roll" class="sheet-roll" name="roll_RangedAttack" value="!whfp4e --name=@{character_name},weapon=@{RangedWeaponName},type=Range Attack,target=@{RangedBalisticSkill},range=@{WeaponRange},strengthBonus=@{StrengthBonus},damageBonus=@{RangedDamage},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},ammo=@{RangedAmmoType},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},rangeToTarget=?{Range|0}"></button>
+            				<button type="roll" class="sheet-roll" name="roll_RangedAttack" value="!whfp4e --name=@{character_name},weapon=@{RangedWeaponName},type=Range Attack,target=[[@{RangedBalisticSkill}+@{RangedBonus}]],range=@{WeaponRange},strengthBonus=@{StrengthBonus},damageBonus=@{RangedDamage},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},ammo=@{RangedAmmoType},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},rangeToTarget=?{Range|0}"></button>
             			</div>	
             			<div class="sheet-col-1-25 sheet-center sheet-pad-r-sm">						                                                                   
-            				<button type="roll" class="sheet-roll" name="roll_RangedUnopposed" value="!whfp4e --name=@{character_name},weapon=@{RangedWeaponName},type=Range Unopposed,target=@{RangedBalisticSkill},range=@{WeaponRange},strengthBonus=@{StrengthBonus},damageBonus=@{RangedDamage},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},ammo=@{RangedAmmoType},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},rangeToTarget=?{Range|0}"></button>
+            				<button type="roll" class="sheet-roll" name="roll_RangedUnopposed" value="!whfp4e --name=@{character_name},weapon=@{RangedWeaponName},type=Range Unopposed,target=[[@{RangedBalisticSkill}+@{RangedBonus}]],range=@{WeaponRange},strengthBonus=@{StrengthBonus},damageBonus=@{RangedDamage},advantage=@{Advantage},modifier=?{@{translation_modifier}|0},talents=?{Talents|0},ammo=@{RangedAmmoType},size=?{Size|Average,Average|Tiny,Tiny|Little,Little|Small,Small|Large,Large|Enormous,Enormous|Monsterous,Monsterous},rangeToTarget=?{Range|0}"></button>
             			</div>					
             		</div>	
             	</fieldset>
@@ -3233,7 +3233,7 @@
 						<input type="number" name="attr_armorEncH1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseH1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseH1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusH1" value="0"/>
@@ -3260,7 +3260,7 @@
 						<input type="number" name="attr_armorEncH2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseH2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseH2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusH2" value="0"/>
@@ -3287,7 +3287,7 @@
 						<input type="number" name="attr_armorEncH3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseH3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseH3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusH3" value="0"/>
@@ -3330,7 +3330,7 @@
 						<input type="number" name="attr_armorEncT1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseT1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseT1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusT1" value="0"/>
@@ -3357,7 +3357,7 @@
 						<input type="number" name="attr_armorEncT2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseT2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseT2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusT2" value="0"/>
@@ -3384,7 +3384,7 @@
 						<input type="number" name="attr_armorEncT3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseT3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseT3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusT3" value="0"/>
@@ -3425,7 +3425,7 @@
 						<input type="number" name="attr_armorEncLA1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLA1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLA1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLA1" value="0"/>
@@ -3452,7 +3452,7 @@
 						<input type="number" name="attr_armorEncLA2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLA2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLA2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLA2" value="0"/>
@@ -3478,7 +3478,7 @@
 						<input type="number" name="attr_armorEncLA3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLA3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLA3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLA3" value="0"/>
@@ -3519,7 +3519,7 @@
 						<input type="number" name="attr_armorEncRA1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRA1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRA1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRA1" value="0"/>
@@ -3546,7 +3546,7 @@
 						<input type="number" name="attr_armorEncRA2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRA2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRA2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRA2" value="0"/>
@@ -3572,7 +3572,7 @@
 						<input type="number" name="attr_armorEncRA3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRA3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRA3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRA3" value="0"/>
@@ -3614,7 +3614,7 @@
 						<input type="number" name="attr_armorEncLL1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLL1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLL1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLL1" value="0"/>
@@ -3641,7 +3641,7 @@
 						<input type="number" name="attr_armorEncLL2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLL2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLL2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLL2" value="0"/>
@@ -3668,7 +3668,7 @@
 						<input type="number" name="attr_armorEncLL3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseLL3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseLL3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusLL3" value="0"/>
@@ -3710,7 +3710,7 @@
 						<input type="number" name="attr_armorEncRL1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRL1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRL1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRL1" value="0"/>
@@ -3737,7 +3737,7 @@
 						<input type="number" name="attr_armorEncRL2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRL2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRL2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRL2" value="0"/>
@@ -3764,7 +3764,7 @@
 						<input type="number" name="attr_armorEncRL3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseRL3" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseRL3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusRL3" value="0"/>
@@ -3806,7 +3806,7 @@
 						<input type="number" name="attr_armorEncS1" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseS1" value="1" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseS1" value="1"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusS1" value="0"/>
@@ -3833,7 +3833,7 @@
 						<input type="number" name="attr_armorEncS2" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseS2" value="2" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseS2" value="2"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusS2" value="0"/>
@@ -3860,7 +3860,7 @@
 						<input type="number" name="attr_armorEncS3" value="0"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
-						<input type="number" name="attr_armorAPbaseS3" value="3" disabled="true"/>
+						<input type="number" name="attr_armorAPbaseS3" value="3"/>
 					</div>
 					<div class="sheet-col-1-10 sheet-vert-middle sheet-pad-r-sm">
 						<input type="number" name="attr_armormagicbonusS3" value="0"/>
