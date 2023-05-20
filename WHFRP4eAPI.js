@@ -22,7 +22,7 @@ var WHFP4E = WHFP4E || (function() {
     let undamaging = false
     let damaging = false
     let impact = false
-    let charging = false
+    let charging = 'no'
     let infighting = false
     let tiring = false
     let toughness = 0
@@ -78,12 +78,17 @@ var WHFP4E = WHFP4E || (function() {
     let mountRightLegArmor
     let mountWounds
     let mountDamage
+    let partial
+    let impenetrable
+    let weakpoints
+    let helmType
 
     checkInstall = function() {
         if( ! _.has(state,'WHFP4E')) {
             state.WHFP4E=state.WHFP4E || {};
-			setDefaults()
+					setDefaults()
 		}
+
     },
 
     inputHandler = function(msg_orig) {
@@ -140,6 +145,19 @@ var WHFP4E = WHFP4E || (function() {
                  })
             }
     	}
+	},
+
+	//Extracts inline rolls
+	inlineExtract = function(msg){
+	    return _.chain(msg.inlinerolls)
+				.reduce(function(m,v,k){
+					m['$[['+k+']]']=v.results.total || 0;
+					return m;
+				},{})
+				.reduce(function(m,v,k){
+					return m.replace(k,v);
+				},msg.content)
+				.value();
 	},
 
     //Extracts the command details from a command string passed from handleInput
@@ -287,6 +305,29 @@ var WHFP4E = WHFP4E || (function() {
 	        log ('Attack Handler')
 	    }
 
+        critical    = false
+	    blackpowder = false
+        pummel      = false
+        trapblade   = false
+        fast        = false
+        entangle    = false
+        dangerous   = false
+        blackpowder = false
+        penetrating = false
+        condition   = false
+        impressive  = false
+        repeater    = false
+        reload      = false
+        impale      = false
+        damaging    = false
+        undamaging  = false
+        damaging    = false
+        impact      = false
+        deathblow   = false
+        mounted     = 'no'
+
+
+        roll = 0
 	    output = '<div class="sheet-rolltemplate-whfrp2e"> '
         output += '<div class="sheet-rt-card"> '
 	    output += '<div class="sheet-rt-header sheet-relative sheet-attack">'
@@ -295,7 +336,7 @@ var WHFP4E = WHFP4E || (function() {
         output += '<div class="sheet-rt-subheader">'+weapon+'</div>'
         output += '</div>';
 	    output += '<div class="sheet-main-content">'
-
+        log(roll)
 		determineSuccess()
 
         if (['Melee Mounted'].includes(type)) {
@@ -315,7 +356,7 @@ var WHFP4E = WHFP4E || (function() {
 		    }
 		}
 
-		if (['Melee Attack','Range Attack','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
+		if (['Melee Attack','Range Attack','Range Unopposed','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
             determineHitLocation()
             displayBase()
  			storeAttack()
@@ -331,7 +372,7 @@ var WHFP4E = WHFP4E || (function() {
         output += '</div>';
 		sendChat(who,output,null,{noarchive:true});
 
- 		if (['Melee Oppose','Dodge','Melee Unopposed','Range Unopposed'].includes(type)) {
+ 		if (['Melee Oppose','Dodge'].includes(type)) {
 		    displayResults(characterObj, who)
  		}
 	},
@@ -378,11 +419,7 @@ var WHFP4E = WHFP4E || (function() {
 	    }
 
         found       = false
-        damaging    = false
-        undamaging  = false
-        damaging    = false
-        impact      = false
-        deathblow   = false
+        let hit     = false
 
         //target
         output += addHTMLMessage('Target',true);
@@ -401,7 +438,6 @@ var WHFP4E = WHFP4E || (function() {
         if (['Melee Attack','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
             attackTarget()
         }
-
         if (type == 'Melee Oppose') {
             opposeTarget()
         }
@@ -411,68 +447,82 @@ var WHFP4E = WHFP4E || (function() {
         if (found) {
             output += addHTMLValue('Final Target: ',target,false);
         }
+
         output += addHTMLMessage('Roll',true);
         output += addHTMLValue('Roll: ',roll,false);
 
-        //success
-        output      += addHTMLMessage('Success Level',true);
-        output      += addHTMLValue('SL: ',success,false);
-        if (['Melee Attack','Range Attack','Range Unopposed','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
-            attackSL()
-        }
-        if (['Melee Oppose','Dodge'].includes(type)) {
-            opposeSL()
-        }
-        talentsSL()
-        if (found) {
-            output      += addHTMLValue('Final SL: ',success,true);
-        }
-
-        //damage
         if (type != 'Dodge') {
-            output      += addHTMLMessage('Damage',true);
-            output      += addHTMLValue('Base: ',(strengthBonus + damageBonus),false);
-            damage      = (strengthBonus + damageBonus)
-
-            if (['Melee Attack','Range Attack','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
-                attackDamage()
-            }
-            if (!damaging) {
-                output  += addHTMLValue('SL: ',success,false);
-                damage  = damage + success
-            }
-            output      += addHTMLValue('Final: ',damage,false);
-            if (damaging) {
-                output  += addHTMLMessage('Damaging Weapon',true,'red');
-            }
-            if (undamaging) {
-                output  += addHTMLMessage('Undamaging Weapon',true,'red');
+            if (['Range Attack','Range Unopposed'].includes(type)) {
+                if (roll <= target) {
+                    output      += addHTMLMessage('Hit',true,'green');
+                    hit         = true
+                } else {
+                    output      += addHTMLMessage('Miss',true,'red');
+                    hit         = false
+                }
             }
 
-            //location
-            output      += addHTMLMessage('Location',true);
-            output      += addHTMLValue('Hit Location: ',location,false);
+            if (!['Range Attack','Range Unopposed'].includes(type) || hit)  {
+                //success
+                output      += addHTMLMessage('Success Level',true);
+                output      += addHTMLValue('SL: ',success,false);
+                if (['Melee Attack','Range Attack','Range Unopposed','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
+                    attackSL()
+                }
+                if (['Melee Oppose','Dodge'].includes(type)) {
+                    opposeSL()
+                }
+                talentsSL()
+                if (found) {
+                    output      += addHTMLValue('Final SL: ',success,true);
+                }
+                //damage
+                output      += addHTMLMessage('Damage',true);
+                output      += addHTMLValue('Base: ',(strengthBonus + damageBonus),false);
+                damage      = (strengthBonus + damageBonus)
 
-            determineCritical(roll, target)
-            if (impale && !critical) {
-                determineImpale(roll, target)
-            }
+                if (['Melee Attack','Range Attack','Range Unopposed','Melee Unopposed','Melee Mounted','Melee Dual Wield'].includes(type)) {
+                    attackDamage()
+                }
+                if (!damaging) {
+                    output  += addHTMLValue('SL: ',success,false);
+                    damage  = damage + success
+                }
+                output      += addHTMLValue('Final: ',damage,false);
 
-            if (blackpowder) {
-                output      += addHTMLMessage('Blackpowder',true, 'green');
-            }
-            if (dangerous) {
-                output      += addHTMLMessage('Dangerous',true, 'green');
-            }
-            if (reload) {
-                output      += addHTMLMessage('Reload',true, 'green');
-            }
-            if (repeater) {
-                output      += addHTMLMessage('Repeater',true, 'green');
-            }
-            if (deathblow) {
-                output      += addHTMLMessage('Attacker Invokes Deathblow',true, 'red');
-                output      += addHTMLMessage('Attacker Creates Fear/Terror',true, 'red');
+                if (damaging) {
+                    output  += addHTMLMessage('Damaging Weapon',true,'red');
+                }
+                if (undamaging) {
+                    output  += addHTMLMessage('Undamaging Weapon',true,'red');
+                }
+                //location
+                output      += addHTMLMessage('Location',true);
+                output      += addHTMLValue('Hit Location: ',location,false);
+                //criticals
+                determineCritical(roll, target)
+                if (impale && !critical) {
+                    determineImpale(roll, target)
+                }
+                //misc
+                if (blackpowder) {
+                    output      += addHTMLMessage('Blackpowder',true, 'green');
+                }
+                if (dangerous) {
+                    output      += addHTMLMessage('Dangerous',true, 'green');
+                }
+                if (reload) {
+                    output      += addHTMLMessage('Reload',true, 'green');
+                }
+                if (repeater) {
+                    output      += addHTMLMessage('Repeater',true, 'green');
+                }
+                if (deathblow) {
+                    output      += addHTMLMessage('Attacker Invokes Deathblow',true, 'red');
+                }
+                if (charging == 'yes') {
+                    output      += addHTMLMessage('Attacker Creates Fear/Terror',true, 'red');
+                }
             }
         }
 
@@ -514,44 +564,44 @@ var WHFP4E = WHFP4E || (function() {
 
     rangeTarget = function() {
         if (parseInt(range) > 0) {
-            output += addHTMLValue('Modifier: ',rangeModifier,false);
+            output += addHTMLValue('Range: ',rangeModifier,false);
             target = parseInt(target) + parseInt(rangeModifier)
             success = success + parseInt(Math.floor(rangeModifier/10))
             found = true
         }
 
         if (opposeSize == 'Tiny') {
-            output += addHTMLValue('versus ' + size + ':',-30,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',-30,false);
             target = parseInt(target) - 30
             success = success - 3
             found = true
         } else if (opposeSize == 'Little') {
-            output += addHTMLValue('versus ' + size + ':',-20,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',-20,false);
             target = parseInt(target) - 20
             success = success - 2
             found = true
         } else if (opposeSize == 'Small') {
-            output += addHTMLValue('versus ' + size + ':',-10,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',-10,false);
             target = parseInt(target) - 10
             success = success - 3
             found = true
         } else if (opposeSize == 'Average') {
-            output += addHTMLValue('versus ' + size + ':',+0,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',+0,false);
             target = parseInt(target) - 0
             success = success + 0
             found = true
         } else if (opposeSize == 'Large') {
-            output += addHTMLValue('versus ' + size + ':',+20,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',+20,false);
             target = parseInt(target) + 20
             success = success + 2
             found = true
         } else if (opposeSize == 'Enormous') {
-            output += addHTMLValue('versus ' + size + ':',+40,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',+40,false);
             target = parseInt(target) + 40
             success = success + 4
             found = true
         } else if (opposeSize == 'Monsterous') {
-            output += addHTMLValue('versus ' + size + ':',+60,false);
+            output += addHTMLValue('versus ' + opposeSize + ':',+60,false);
             target = parseInt(target) + 60
             success = success + 6
             found = true
@@ -754,8 +804,11 @@ var WHFP4E = WHFP4E || (function() {
     },
 
     talentsSL = function() {
+        log('talents' + talents)
+        log('roll' + roll)
+        log('target' + target)
         if (parseInt(talents) > 0) {
-            if (parseInt(state.WHFP4E.attack.roll) <= parseInt(state.WHFP4E.attack.target)) {
+            if (parseInt(roll) <= parseInt(target)) {
                 success = parseInt(success) + parseInt(talents)
                 output  += addHTMLValue('Talents: ','+' + parseInt(talents),false);
                 found = true
@@ -776,13 +829,18 @@ var WHFP4E = WHFP4E || (function() {
                 damage = parseInt(unit) + strengthBonus + damageBonus
                 output += addHTMLValue('Damage SL: ',unit,false);
                 damaging = true
-                impactApplied = true
+            } else {
+                 damage = parseInt(success) + strengthBonus + damageBonus
+                 output += addHTMLValue('Damage SL: ',success,false);
+                 damaging = true
             }
         }
+
         if (impact) {
             let unit = parseRoll(roll)
             damage = parseInt(damage) + parseInt(unit)
             output  += addHTMLValue('Impact: ',unit,false);
+            impactApplied = true
         }
 
         for (var property in state.WHFP4E.weapon[weapon]) {
@@ -942,6 +1000,9 @@ var WHFP4E = WHFP4E || (function() {
 	    }
 
         armor = 0
+        leatherAP = 0
+        mailAP = 0
+        plateAP = 0
 
         //shield
         getAP('armornameS1', 'armornameS2', 'armornameS3', 'armorAPbaseS1', 'armorAPbaseS2', 'armorAPbaseS3', 'armormagicbonusS1', 'armormagicbonusS2', 'armormagicbonusS3', 'armordamageS1', 'armordamageS2', 'armordamageS3', true)
@@ -966,14 +1027,67 @@ var WHFP4E = WHFP4E || (function() {
             getAP('armornameLA1', 'armornameLA2', 'armornameLA3', 'armorAPbaseLA1', 'armorAPbaseLA2', 'armorAPbaseLA3', 'armormagicbonusLA1', 'armormagicbonusLA2', 'armormagicbonusLA3', 'armordamageLA1', 'armordamageLA2', 'armordamageLA3')
         }
 
-//        log('leather' + leatherAP)
-//        log('mail' + mailAP)
-//        log('plate' + plateAP)
-
         armor       = armor + shieldAP + Math.floor(parseInt(toughness)/10)
-
-        return armor
 	},
+
+    getAP = function(worn1, worn2, worn3, apBase1, apBase2, apBase3, apMagic1, apMagic2, apMagic3, apDamage1, apDamage2, apDamage3, shield) {
+        let leather = getAttrByName(characterObj.id, worn1)
+        let mail    = getAttrByName(characterObj.id, worn2)
+        let plate   = getAttrByName(characterObj.id, worn3)
+
+        leatherAP   = parseInt(getAttrByName(characterObj.id, apBase1)) + parseInt(getAttrByName(characterObj.id, apMagic1)) + parseInt(getAttrByName(characterObj.id, apDamage1))
+        mailAP	    = parseInt(getAttrByName(characterObj.id, apBase2)) + parseInt(getAttrByName(characterObj.id, apMagic2)) + parseInt(getAttrByName(characterObj.id ,apDamage2))
+        plateAP	    = parseInt(getAttrByName(characterObj.id, apBase3)) + parseInt(getAttrByName(characterObj.id, apMagic3)) + parseInt(getAttrByName(characterObj.id, apDamage3))
+
+        if (mail == 'Chainmail Coif') {
+            partial = true
+        }
+        if (plate == 'Open Helm') {
+            partial = true
+        } else {
+            impenetrable = true
+            weakpoints = true
+        }
+        if (leather == 'Reinforced Soft Kit') {
+            partial = true
+            weakpoints = false
+        }
+        if (['Bascinet','Armet','Sallet','Great Helm'].includes(plate)) {
+            helmType == plate
+        } else {
+            helmType == 'none'
+        }
+
+        if (leather.length > 0) {
+            if (shield) {
+                shieldAP = leatherAP
+            } else {
+                armor = armor + leatherAP
+            }
+        } else {
+            leatherAP = 0
+        }
+
+        if (mail.length > 0) {
+            if (shield) {
+                shieldAP = mailAP
+            } else {
+                armor = armor + mailAP
+            }
+        } else {
+            mailAP = 0
+        }
+
+        if (plate.length > 0) {
+            if (shield) {
+                shieldAP = plateAP
+            } else {
+                armor = armor + plateAP
+            }
+        } else {
+            plateAP = 0
+        }
+    },
 
     determineResults = function() {
         found = false
@@ -986,7 +1100,7 @@ var WHFP4E = WHFP4E || (function() {
             output += addHTMLValue('Oppose SL:',success,false)
         }
 
-        if (['Melee Unopposed','Range Oppose'].includes(type)) {
+        if (['Melee Unopposed','Range Unopposed'].includes(type)) {
             output += addHTMLMessage('Hit',true,'green')
             hit = true
         } else if (parseInt(state.WHFP4E.attack.success) > parseInt(success)) {
@@ -1006,10 +1120,18 @@ var WHFP4E = WHFP4E || (function() {
         }
 
         if (hit) {
+            output += addHTMLMessage(state.WHFP4E.attack.location,true,'green');
             output += addHTMLMessage('Damage Results',true);
             output += addHTMLValue('Attack Damage:',state.WHFP4E.attack.damage,false);
-            output += addHTMLValue('Oppose SL:',success,false);
+            if (!['Melee Unopposed','Range Unopposed'].includes(type)) {
+                output += addHTMLValue('Oppose SL:',success,false);
+            }
             output += addHTMLValue('Base Armor:',armor,false);
+
+            if (helmType == 'Bascinet' && state.WHFP4E.attack.type == 'Range Attack') {
+                armor = armor + 1
+                output += addHTMLValue('Bascinet vs Range:','+1',false);
+            }
 
             if (state.WHFP4E.attack.penetrating) {
                 if (plateAP > 0) {
@@ -1020,38 +1142,36 @@ var WHFP4E = WHFP4E || (function() {
                     output += addHTMLValue('Penetrating:','-1 Mail',false);
                     armor = parseInt(armor) - 1
                 }
-                 if (leatherAP > 0) {
-                     output += addHTMLValue('Penetrating:','-' + leatherAP + ' leather',false);
-                     armor = parseInt(armor) - leatherAP
-                 }
-                 if (shieldAP > 0) {
-                     output += addHTMLValue('Penetrating:','-' + '-1 Shield', + ' Shield',false);
-                     armor = parseInt(armor) - 1
-                 }
+                if (leatherAP > 0) {
+                    output += addHTMLValue('Penetrating:','-' + leatherAP + ' Soft Kit',false);
+                    armor = parseInt(armor) - leatherAP
+                }
+                if (shieldAP > 0) {
+                    output += addHTMLValue('Penetrating:','-' + '1 Shield', + ' Shield',false);
+                    armor = parseInt(armor) - 1
+                }
             }
 
-            if (parseInt(roll) % 2 == 0 && state.WHFP4E.attack.location == 'Head') {
-                openHelm    = parseInt(getAttrByName(characterObj.id,'armoropenpenalty'))
-                fullHelm    = parseInt(getAttrByName(characterObj.id,'armorhelmpenalty'))
-                if (openHelm) {
-                    output  += addHTMLValue('Open Helm: -', (plateAP + mailAP), false);
+            if (state.WHFP4E.attack.location == 'Head' && (parseInt(roll) % 2 == 0 || state.WHFP4E.attack.critical)) {
+                if (['Chainmail Coif', 'Open Helm'].includes(helmType)) {
+                    output  += addHTMLValue(helmType + ':', ' -' + (plateAP - mailAP) + 'AP', false);
                     armor   = armor - mailAP - plateAP
-                    found = true
-                }
-                if (fullHelm) {
-                    output  += addHTMLValue('Full Helm: -', mailAP, false);
-                    armor   = armor - mailAP
                     found = true
                 }
             }
             if (parseInt(state.WHFP4E.attack.critical)) {
                 if (state.WHFP4E.attack.critical && plateAP > 0) {
-                    if (state.WHFP4E.attack.impale) {
+                    if (state.WHFP4E.attack.impale && weakpoints) {
                         output  += addHTMLValue('Weakpoints: ', '-'+plateAP + 'AP', false);
                         armor   = armor - plateAP
                         found = true
                     }
                 }
+            }
+            if (state.WHFP4E.attack.impale) {
+                output += addHTMLValue('Impale Wounds:','1',false);
+                armor = armor - 1
+                found = true
             }
             if (found) {
                 output += addHTMLValue('Final Armor:',armor,false);
@@ -1063,9 +1183,47 @@ var WHFP4E = WHFP4E || (function() {
                 } else {
                     output += addHTMLValue('Damage:','1',true);
                 }
+            } else if (['Melee Unopposed','Range Unopposed'].includes(type)) {
+                output += addHTMLValue('Damage:',(parseInt(state.WHFP4E.attack.damage) - armor),true);
             } else {
                 output += addHTMLValue('Damage:',(parseInt(state.WHFP4E.attack.damage) - parseInt(success) - armor),true);
             }
+
+            if (parseInt(state.WHFP4E.attack.pummel)) {
+                output  += addHTMLMessage('Pummel',true);
+                if (location == 'head') {
+                    opposedTest(state.WHFP4E.attack.strength, endurance)
+                    if (condition) {
+                        output  += addHTMLMessage('Opposition Stunned',true,'green');
+                    } else {
+                        output  += addHTMLMessage('No Effect',true,'red');
+                    }
+                }
+            }
+            if (state.WHFP4E.attack.trapblade && critical) {
+                output  += addHTMLMessage('Trap Blade',true);
+                opposedTest(state.WHFP4E.attack.strength, strength)
+                if (impressive) {
+                    output  += addHTMLMessage('Weapon Broken',true,'green');
+                } else if (condition) {
+                    output  += addHTMLMessage('Weapon Dropped',true,'green');
+                } else {
+                    output  += addHTMLMessage('No Effect',true,'red');
+                }
+            }
+            if (state.WHFP4E.attack.entangle) {
+                output  += addHTMLMessage('Entangle',true);
+                opposedTest(state.WHFP4E.attack.strength, strength)
+                if (condition) {
+                    output  += addHTMLMessage('Entangled',true,'green');
+                } else {
+                    output  += addHTMLMessage('No Effect',true,'red');
+                }
+            }
+        }
+
+        if (helmType == 'Sallet' && state.WHFP4E.attack.critical) {
+            output += addHTMLValue('Sallet Critical Wounds:','-1',false);
         }
 
         if (parseInt(state.WHFP4E.attack.critical)) {
@@ -1080,7 +1238,8 @@ var WHFP4E = WHFP4E || (function() {
             output  += addHTMLMessage('Attack Critical',true,'green');
         }
         if (critical) {
-            output  += addHTMLMessage('Oppose Critical',true,'green');
+            output  += addHTMLMessage('Oppose Critical',true,'red');
+            output += addHTMLMessage(location,true,'red');
         }
         if (parseInt(state.WHFP4E.attack.fumble)) {
              output  += addHTMLMessage('Attack Fumble',true,'red');
@@ -1089,31 +1248,9 @@ var WHFP4E = WHFP4E || (function() {
             output  += addHTMLMessage('Oppose Fumble',true,'red');
         }
 
-        if (parseInt(state.WHFP4E.attack.pummel)) {
-            output  += addHTMLMessage('Pummel',true);
-            if (location == 'head') {
-                opposedTest(state.WHFP4E.attack.strength, endurance)
-                if (condition) {
-                    output  += addHTMLMessage('Opposition Stunned',true,'green');
-                } else {
-                    output  += addHTMLMessage('No Effect',true,'red');
-                }
-            }
-        }
-        if (state.WHFP4E.attack.trapblade) {
-            output  += addHTMLMessage('Trap Blade',true);
-            opposedTest(state.WHFP4E.attack.strength, strength)
-            if (impressive) {
-                output  += addHTMLMessage('Weapon Broken',true,'green');
-            } else if (condition) {
-                output  += addHTMLMessage('Weapon Dropped',true,'green');
-            } else {
-                output  += addHTMLMessage('No Effect',true,'red');
-            }
-        }
+
         if (state.WHFP4E.attack.blackpowder) {
             output  += addHTMLMessage('Blackpowder',true);
-
             standardTest(cool)
             if (condition) {
                 output  += addHTMLMessage('Target Broken',true,'green');
@@ -1121,15 +1258,17 @@ var WHFP4E = WHFP4E || (function() {
                 output  += addHTMLMessage('No Effect',true,'red');
             }
         }
-        if (state.WHFP4E.attack.entangle) {
-            output  += addHTMLMessage('Entangle',true);
-            opposedTest(state.WHFP4E.attack.strength, strength)
+        if (state.WHFP4E.attack.blackpowder) {
+            output  += addHTMLMessage('Corruption',true);
+
+            standardTest(endurance)
             if (condition) {
-                output  += addHTMLMessage('Entangled',true,'green');
+                output  += addHTMLMessage('Minor Corruption',true,'red');
             } else {
                 output  += addHTMLMessage('No Effect',true,'red');
             }
         }
+
         if (state.WHFP4E.attack.dangerous) {
             output  += addHTMLMessage('Dangerous',true);
             if (parseInt(parseRoll(state.WHFP4E.attack.roll))) {
@@ -1141,12 +1280,13 @@ var WHFP4E = WHFP4E || (function() {
     },
 
     checkOpposeSize = function() {
-
+        log(type)
         if (type == 'Melee Mounted') {
             size = 'Large'
         }
 
         log(size)
+        log(opposeSize)
         if (size == 'Little') {
             if (['Tiny'].includes(opposeSize)) {
                 damaging = true
@@ -1203,7 +1343,6 @@ var WHFP4E = WHFP4E || (function() {
     }
 
     checkAttackSize = function() {
-
         log(state.WHFP4E.attack.size)
         if (size == 'Tiny') {
             if (['Little','Small', 'Average', 'Large', 'Enormous','Monstrous'].includes(state.WHFP4E.attack.size)) {
@@ -1298,49 +1437,6 @@ var WHFP4E = WHFP4E || (function() {
         }
     },
 
-    getAP = function(worn1, worn2, worn3, apBase1, apBase2, apBase3, apMagic1, apMagic2, apMagic3, apDamage1, apDamage2, apDamage3, shield) {
-        let leather = getAttrByName(characterObj.id, worn1)
-        let mail    = getAttrByName(characterObj.id, worn2)
-        let plate   = getAttrByName(characterObj.id, worn3)
-
-        leatherAP   = parseInt(getAttrByName(characterObj.id, apBase1)) + parseInt(getAttrByName(characterObj.id, apMagic1)) + parseInt(getAttrByName(characterObj.id, apDamage1))
-        mailAP	    = parseInt(getAttrByName(characterObj.id, apBase2)) + parseInt(getAttrByName(characterObj.id, apMagic2)) + parseInt(getAttrByName(characterObj.id ,apDamage2))
-        plateAP	    = parseInt(getAttrByName(characterObj.id, apBase3)) + parseInt(getAttrByName(characterObj.id, apMagic3)) + parseInt(getAttrByName(characterObj.id, apDamage3))
-//        log('leather'+leather.length)
-//        log('mail'+mail.length)
-//        log('p0late'+plate.length)
-
-        if (leather.length > 0) {
-            if (shield) {
-                shieldAP = leatherAP
-            } else {
-                armor = armor + leatherAP
-            }
-        } else {
-            leatherAP = 0
-        }
-        if (mail.length > 0) {
-            if (shield) {
-                shieldAP = mailAP
-            } else {
-                armor = armor + mailAP
-            }
-        } else {
-            mailAP = 0
-        }
-        if (plate.length > 0) {
-            if (shield) {
-                shieldAP = plateAP
-            } else {
-                armor = armor + plateAP
-            }
-        } else {
-            plateAP = 0
-        }
-//                log('leatherAP'+leatherAP)
-//                log('mailAP'+mailAP)
-//                log('plateAP'+plateAP)
-    },
 
 	parseRoll = function (roll) {
 	    let unit = 0
@@ -1497,6 +1593,8 @@ var WHFP4E = WHFP4E || (function() {
 		    weapon: {
 				'Hand Weapon': {
 				},
+				'Claws': {
+				},
 				'Improvised Weapon': {
 					undamaging: true,
 				},
@@ -1556,6 +1654,10 @@ var WHFP4E = WHFP4E || (function() {
 				'Halberd': {
 					defensive: true,
 					hack: true,
+					impale: true,
+				},
+				'Pollaxe (Impale)': {
+					defensive: true,
 					impale: true,
 				},
 				'Spear': {
@@ -1679,6 +1781,19 @@ var WHFP4E = WHFP4E || (function() {
 				'Throwing Knife': {
 					hack: true,
 				},
+				'Warplock Pistol': {
+					reload: 1,
+					damaging: true,
+					blackpowder: true,
+					dangerous: true,
+					penetrating: true
+				},
+				'Warplock Jezzail': {
+					reload: 3,
+					damaging: true,
+					blackpowder: true,
+					dangerous: true
+				},
 		    },
 		    ammo: {
 		        'Bullet and Powder': {
@@ -1711,43 +1826,11 @@ var WHFP4E = WHFP4E || (function() {
 		        'Stone Bullet': {
 		            pummel: true,
 		        },
+		        'Warpstone': {
+		            penetrating: true,
+		            corruption: 'minor'
+		        },
 		    },
-			armor: {
-				leatherSkullcap: {
-					key: 'Leather Skullcap'
-				},
-				leatherBreastplate: {
-					key: 'Leather Breastplate'
-				},
-				mailCoif: {
-					key: 'Mail Coif',
-					partial: true,
-				},
-				openHelm: {
-					key: 'Open Helm',
-					partial: true,
-				},
-				plateBreastplate: {
-					key: 'Plate Breastplate',
-					impenetrable: true,
-					weakpoints: true,
-				},
-				bracers: {
-					key: 'Plate Bracers',
-					impenetrable: true,
-					weakpoints: true,
-				},
-				plateLeggings: {
-					key: 'Plate Leggings',
-					impenetrable: true,
-					weakpoints: true,
-				},
-				Helm: {
-					key: 'Full Helm',
-					impenetrable: true,
-					weakpoints: true,
-				},
-			},
 			attack: {
                 name: 'Attack',
                 key: 'attack',
